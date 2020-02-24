@@ -34,7 +34,7 @@ export default class SignIn extends React.Component {
                             <div className="blog-slider__title">Giriş Yap!</div>
                             <span className="blog-slider__code">E-Mail</span>
                             <InputGroup compact
-                                style={{margin: "2em"}}
+                                style={{margin: "1em"}}
                             >
                                 <AutoComplete
                                     dataSource={this.state.dataSource}
