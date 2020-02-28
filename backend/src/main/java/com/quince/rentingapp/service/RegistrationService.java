@@ -1,4 +1,4 @@
-package com.quince.rentingapp.registration;
+package com.quince.rentingapp.service;
 
 import com.quince.rentingapp.security.user_details.CustomUserDetails;
 import com.quince.rentingapp.security.user_details.CustomUserDetailsRepository;

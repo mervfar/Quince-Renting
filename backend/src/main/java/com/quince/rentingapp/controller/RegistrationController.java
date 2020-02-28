@@ -1,5 +1,6 @@
-package com.quince.rentingapp.registration;
+package com.quince.rentingapp.controller;
 
+import com.quince.rentingapp.service.RegistrationService;
 import com.quince.rentingapp.security.user_details.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

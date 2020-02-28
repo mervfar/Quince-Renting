@@ -1,4 +1,4 @@
-package com.quince.rentingapp.base;
+package com.quince.rentingapp.domain.base;
 
 import com.quince.rentingapp.security.user_details.CustomUserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -9,7 +9,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -24,9 +23,6 @@ public abstract class BaseEntity {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     @Column(name = "id", updatable = false)
     private String id;
-
-    @Column(name = "tenant" , updatable = false)
-    private String tenant;
 
     @Column(name = "trash")
     private String trash;
@@ -48,9 +44,6 @@ public abstract class BaseEntity {
     @UpdateTimestamp
     @Column(name = "modified_at")
     private Date modifiedAt;
-
-    @Column(name = "version")
-    private BigDecimal version;
 
     @Column(name = "activated")
     private boolean activated;

@@ -1,6 +1,6 @@
 package com.quince.rentingapp.security.user_details;
 
-import com.quince.rentingapp.base.BaseEntity;
+import com.quince.rentingapp.domain.base.BaseEntity;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,7 +21,6 @@ public class CustomUserDetails extends BaseEntity implements UserDetails {
     private String username;
     private String password;
     private String email;
-    private boolean active;
 
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -62,6 +61,6 @@ public class CustomUserDetails extends BaseEntity implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return active;
+        return true;
     }
 }
