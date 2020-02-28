@@ -1,13 +1,13 @@
-package com.quince.QuincePanel;
+package com.quince.rentingapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class QuincePanelApplicationTests {
+class QuinceRentingApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
