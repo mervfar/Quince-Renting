@@ -10,4 +10,5 @@
         android:background="#FFEB3B"
         android:text="Üye Ol"
         android:textSize="18sp" />
+
 </LinearLayout>

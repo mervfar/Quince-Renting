@@ -20,7 +20,8 @@ public class karsilama extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(),giris.class );
+                Intent intent = new Intent(getApplicationContext(),giris.class);
+                startActivity(intent);
             }
         });
     }

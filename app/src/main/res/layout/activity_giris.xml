@@ -11,6 +11,7 @@
         android:name="com.example.quince.fragmentA"
         android:layout_width="205dp"
         android:layout_height="60dp"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -25,6 +26,7 @@
         android:name="com.example.quince.fragmentB"
         android:layout_width="205dp"
         android:layout_height="60dp"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -33,5 +35,16 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints"
         tools:layout="@layout/fragment_b" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contain"
+        android:layout_width="404dp"
+        android:layout_height="669dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.967"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
