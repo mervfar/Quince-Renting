@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
 
     <Button
         android:id="@+id/giris_yap"
@@ -13,7 +14,9 @@
         android:layout_height="60dp"
         android:background="#FFEB3B"
         android:text="Giriş Yap"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:visibility="visible"
+        tools:visibility="visible" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -40,7 +43,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintVertical_bias="0.104">
 
             <EditText
                 android:id="@+id/editText8"
@@ -79,18 +82,34 @@
 
         <Button
             android:id="@+id/button8"
-            android:layout_width="379dp"
-            android:layout_height="55dp"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
             android:background="#FFEB3B"
-            android:text="GİRİŞ YAP"
+            android:text="Giriş Yap"
+            android:textAlignment="center"
             android:textColor="@android:color/background_light"
-            android:textSize="24sp"
+            android:textDirection="ltr"
+            android:textSize="18sp"
+            android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.422"
+            app:layout_constraintHorizontal_bias="0.456"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.973" />
+            app:layout_constraintVertical_bias="0.769" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="330dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@android:color/background_light"
+            android:text="Giriş yapmadan devam et"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.906" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
