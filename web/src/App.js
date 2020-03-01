@@ -1,8 +1,9 @@
 import React from 'react';
-import MainLayout from './pages/MainLayout'
-import './App.css'
+import 'antd/dist/antd.css';
+import AppLayout from './pages/AppLayout';
+
 function App() {
-  return ( <MainLayout/> );
+  return ( <AppLayout /> );
 }
 
 export default App;
