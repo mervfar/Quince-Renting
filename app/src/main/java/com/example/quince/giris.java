@@ -1,38 +1,49 @@
 package com.example.quince;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class giris extends AppCompatActivity {
-    FragmentManager fragmentManager ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giris);
-        fragmentManager=getSupportFragmentManager();
-    }
 
-    public void onClick(View viev){
-        switch (viev.getId()){
+        Button giris_yap = findViewById(R.id.giris_yap);
+        Button uye_ol= findViewById(R.id.uye_ol);
 
-            case R.id.fragment_a:
-                FragmentTransaction fragmentTransaction1 = fragmentManager.beginTransaction();
-                fragmentA fragmentA = new fragmentA();
-                fragmentTransaction1.replace(R.id.contain,fragmentA);
-                fragmentTransaction1.commit();
-                break;
 
-            case R.id.fragment_b:
-                FragmentTransaction fragmentTransaction2 = fragmentManager.beginTransaction();
-                fragmentB fragmentB = new fragmentB();
-                fragmentTransaction2.replace(R.id.contain,fragmentB);
-                fragmentTransaction2.commit();
-                break;
-        }
+
+        giris_yap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new  fragmentA();
+                FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.contain , fragment).commit();
+
+            }
+        });
+
+        uye_ol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new fragmentB();
+                FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.contain , fragment).commit();
+
+            }
+        });
+
     }
 }
+
+
+

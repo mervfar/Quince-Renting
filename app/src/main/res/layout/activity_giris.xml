@@ -7,47 +7,160 @@
     android:background="@drawable/bayaz"
     tools:context=".giris">
 
-    <fragment
-        android:id="@+id/fragment_a"
-        android:name="com.example.quince.fragmentA"
-        android:layout_width="205dp"
-        android:layout_height="60dp"
-        android:onClick="onClick"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.004"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout="@layout/fragment_a" />
-
-    <fragment
-        android:id="@+id/fragment_b"
-        android:name="com.example.quince.fragmentB"
-        android:layout_width="205dp"
-        android:layout_height="60dp"
-        android:onClick="onClick"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints"
-        tools:layout="@layout/fragment_b" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contain"
-        android:layout_width="407dp"
-        android:layout_height="664dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="400dp"
+        android:layout_height="645dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.448">
+        app:layout_constraintVertical_bias="0.932">
+
+        <CheckBox
+            android:id="@+id/checkbox1"
+            android:layout_width="64dp"
+            android:layout_height="65dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.086"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.441" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="360dp"
+            android:layout_height="160dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.137"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.171">
+
+            <EditText
+                android:id="@+id/editText8"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:text="E-mail adresiniz..."
+                android:textColor="@android:color/darker_gray"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editText9"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:ems="10"
+                android:inputType="textVisiblePassword"
+                android:text="Şifreniz..."
+                android:textColor="@android:color/darker_gray"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beni Hatırla"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.228"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.443" />
+
+        <Button
+            android:id="@+id/gorunmez_buton"
+            android:layout_width="55dp"
+            android:layout_height="45dp"
+            android:background="@drawable/bayaz"
+            android:drawableTop="@drawable/ic_visibility_off_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.275" />
+
+        <LinearLayout
+            android:layout_width="333dp"
+            android:layout_height="107dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.834">
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="330dp"
+                android:layout_height="50dp"
+                android:background="#FFEB3B"
+                android:text="Giriş Yap"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textDirection="ltr"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/button12"
+                android:layout_width="330dp"
+                android:layout_height="50dp"
+                android:background="@drawable/bayaz"
+                android:backgroundTint="@android:color/white"
+                android:text="Giriş yapmadan devam et"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <LinearLayout
+        android:layout_width="407dp"
+        android:layout_height="57dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.004">
+
+        <Button
+            android:id="@+id/giris_yap"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            android:layout_width="204dp"
+            android:layout_height="60dp"
+            android:background="#FFEB3B"
+            android:text="Giriş Yap"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/uye_ol"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            android:layout_width="207dp"
+            android:layout_height="60dp"
+            android:background="#FFEB3B"
+            android:text="ÜYE OL"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

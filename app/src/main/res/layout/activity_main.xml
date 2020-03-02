@@ -7,19 +7,13 @@
     android:background="@drawable/sari1"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/quince"
-        android:layout_width="326dp"
-        android:layout_height="171dp"
-        android:text="QUINCE RENTING"
-        android:textColor="@android:color/black"
-        android:textDirection="ltr"
-        android:textSize="150px"
-        android:textStyle="normal"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="396dp"
+        android:layout_height="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.571" />
+        app:srcCompat="@drawable/ic_quince_renting_logo_svg" />
 </androidx.constraintlayout.widget.ConstraintLayout>

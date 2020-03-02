@@ -7,42 +7,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/uye_ol"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:background="#FFEB3B"
-        android:text="Üye Ol"
-        android:textSize="18sp" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/gorunmez_buton3"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:background="@drawable/bayaz"
+            android:drawableTop="@drawable/ic_visibility_off_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.971"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.572" />
+
+        <Button
+            android:id="@+id/gorunmez_buton2"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:background="@drawable/bayaz"
+            android:drawableTop="@drawable/ic_visibility_off_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.971"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.465" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="331dp"
             android:layout_height="46dp"
             android:text="Gizlilik Politikasını okudum ve kabul ediyorum."
-            android:textColor="@android:color/darker_gray"
-            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.812"
+            app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.739" />
+            app:layout_constraintVertical_bias="0.798" />
 
         <CheckBox
             android:id="@+id/checkbox2"
             android:layout_width="64dp"
             android:layout_height="65dp"
+            android:textColor="@android:color/background_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.046"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.747" />
+            app:layout_constraintVertical_bias="0.792" />
 
         <Button
             android:id="@+id/button5"
@@ -51,27 +71,27 @@
             android:background="#FFEB3B"
             android:text="Üye Ol"
             android:textAlignment="center"
-            android:textColor="@android:color/background_light"
+            android:textColor="@android:color/black"
             android:textDirection="ltr"
             android:textSize="18sp"
-            android:textStyle="normal"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintHorizontal_bias="0.382"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.95" />
+            app:layout_constraintVertical_bias="0.917" />
 
         <LinearLayout
-            android:layout_width="407dp"
-            android:layout_height="377dp"
+            android:layout_width="346dp"
+            android:layout_height="392dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.107"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintVertical_bias="0.197">
 
             <EditText
                 android:id="@+id/editText"
@@ -125,30 +145,31 @@
 
         </LinearLayout>
 
-        <CheckBox
-            android:id="@+id/checkbox1"
-            android:layout_width="64dp"
-            android:layout_height="65dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.655" />
-
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Beni Hatırla"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.212"
+            app:layout_constraintHorizontal_bias="0.209"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.644" />
+            app:layout_constraintVertical_bias="0.711" />
+
+        <CheckBox
+            android:id="@+id/checkbox1"
+            android:layout_width="64dp"
+            android:layout_height="65dp"
+            android:textColor="@android:color/background_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.72" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
