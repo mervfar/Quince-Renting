@@ -14,6 +14,7 @@
         android:layout_marginTop="144dp"
         android:text="Size en uygun aracı kiralamak için doğru yerdesiniz!!"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
