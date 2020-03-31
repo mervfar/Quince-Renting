@@ -89,7 +89,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Adınız"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="#050505"
                 android:textSize="20sp" />
 
             <EditText
@@ -99,7 +99,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Soyadınız"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="#050505"
                 android:textSize="20sp" />
 
             <EditText
@@ -109,7 +109,7 @@
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 android:text="E-mail adresiniz"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="#050505"
                 android:textSize="20sp" />
 
             <EditText
@@ -119,7 +119,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Şifreniz"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="#050505"
                 android:textSize="20sp" />
 
             <EditText
@@ -129,7 +129,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Şifrenizi doğrulayın"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="#050505"
                 android:textSize="20sp" />
 
         </LinearLayout>
