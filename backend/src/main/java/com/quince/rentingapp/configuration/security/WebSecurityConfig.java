@@ -1,4 +1,4 @@
-package com.quince.rentingapp.security;
+package com.quince.rentingapp.configuration.security;
 
 import com.quince.rentingapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +15,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserService userService;
     @Autowired
-    public CustomWebSecurityConfigurerAdapter(UserService userService) {
+    public WebSecurityConfig(UserService userService) {
         this.userService = userService;
     }
 

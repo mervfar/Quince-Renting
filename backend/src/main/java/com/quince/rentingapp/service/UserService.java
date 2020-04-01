@@ -7,17 +7,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
 
 import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class UserService implements UserDetailsService{
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    private User findByEmail(String email){
+    public User findByEmail(String email){
         return userRepository.findByEmail(email);
+    }
+    public User findByUsername(String username){
+        return userRepository.findByUsername(username);
     }
     public List<User> findAll(){
         return userRepository.findAll();
@@ -26,6 +30,6 @@ public class UserService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return null;
+        return userRepository.findByUsername(s);
     }
 }

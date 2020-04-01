@@ -16,31 +16,31 @@ import java.util.List;
 public class LicenseCategoryService {
     private final LicenseCategoryRepository licenseCategoryRepository;
 
-    private List<LicenseCategory> findAll(){
+    public List<LicenseCategory> findAll(){
     return licenseCategoryRepository.findAll();
     }
-    private LicenseCategory findById(long id){
+    public LicenseCategory findById(long id){
         return licenseCategoryRepository.findById(id).
         orElseThrow(() -> new ResourceAccessException("License Category with " + id + " not found"));
     }
-    private List<LicenseCategory> findByBloodType(BloodType blood){
+    public List<LicenseCategory> findByBloodType(BloodType blood){
         return licenseCategoryRepository.findByBloodType(blood);
     }
-    private List<LicenseCategory> findByType(LicenseType type){
+    public List<LicenseCategory> findByType(LicenseType type){
         return licenseCategoryRepository.findByType(type);
     }
-    private List<LicenseCategory> findByDriverLicense(DriverLicense license){
+    public List<LicenseCategory> findByDriverLicense(DriverLicense license){
         return licenseCategoryRepository.findByDriverLicense(license);
     }
-    private List<LicenseCategory> findByActive(boolean isActive){{
+    public List<LicenseCategory> findByActive(boolean isActive){{
         return licenseCategoryRepository.findByActive(isActive);
     }
 
     }
-    private  void saveLicenseCategory(LicenseCategory licenseCategory){
+    public  void saveLicenseCategory(LicenseCategory licenseCategory){
         licenseCategoryRepository.save(licenseCategory);
     }
-    private void delete(LicenseCategory licenseCategory){
+    public void delete(LicenseCategory licenseCategory){
         LicenseCategory category=licenseCategoryRepository.findById(licenseCategory.getId()).
                 orElseThrow(() -> new ResourceAccessException("License Category with " + licenseCategory.getId() + " not found"));
         licenseCategoryRepository.delete(category);

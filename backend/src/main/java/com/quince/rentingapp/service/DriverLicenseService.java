@@ -13,35 +13,35 @@ import java.util.List;
 public class DriverLicenseService {
     private final DriverLicenseRepository driverLicenseRepository;
 
-    private List<DriverLicense> findAll(){
+    public List<DriverLicense> findAll(){
         return driverLicenseRepository.findAll();
     }
-    private DriverLicense findById(Long id){
+    public DriverLicense findById(Long id){
         return driverLicenseRepository.findById(id).
                 orElseThrow(() -> new ResourceAccessException("License with " + id + " not found"));
     }
-    private DriverLicense findByTCno(int TC){
+    public DriverLicense findByTCno(int TC){
         return driverLicenseRepository.findByTCno(TC).
                 orElseThrow(() -> new ResourceAccessException("License with " + TC + " not found"));
     }
 
-    private DriverLicense findByDocumentNo(long documentNo){
+    public DriverLicense findByDocumentNo(long documentNo){
         return driverLicenseRepository.findByDocumentNo(documentNo).
         orElseThrow(() -> new ResourceAccessException("License with " + documentNo + " not found"));
     }
-    private List<DriverLicense> findByIntern(boolean intern){
+    public List<DriverLicense> findByIntern(boolean intern){
         return driverLicenseRepository.findByIntern(intern);
     }
-    private List<DriverLicense> findByOffice(String office){
+    public List<DriverLicense> findByOffice(String office){
         return driverLicenseRepository.findByOffice(office);
     }
-    private List<DriverLicense> findByValid(boolean isValid){
+    public List<DriverLicense> findByValid(boolean isValid){
         return driverLicenseRepository.findByValid(isValid);
     }
-    private void saveDriverLicense(DriverLicense license){
+    public void saveDriverLicense(DriverLicense license){
         driverLicenseRepository.save(license);
     }
-    private void deleteDriverLicense(DriverLicense license){
+    public void deleteDriverLicense(DriverLicense license){
         DriverLicense driverLicense=driverLicenseRepository.findById(license.getId()).
                 orElseThrow(() -> new ResourceAccessException("License with " + license.getId() + " not found"));
         driverLicenseRepository.delete(driverLicense);

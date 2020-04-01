@@ -38,12 +38,15 @@ public class CarService {
     public List<Car> findByFuel(CarFuelType fuel){
         return carRepository.findByFuel(fuel);
     }
+    public List<Car> findAvailableCars(boolean isActive){
+        return carRepository.findByAvailableEquals(isActive);
+    }
     public void saveCar(Car newCar){
         carRepository.save(newCar);
     }
-    public void deleteCar(Car car){
-        Car carFromDB =carRepository.findById(car.getId()).
-                orElseThrow(() -> new ResourceAccessException("Car with " + car.getId() + " not found"));
+    public void deleteCar(long id){
+        Car carFromDB =carRepository.findById(id).
+                orElseThrow(() -> new ResourceAccessException("Car with " + id + " not found"));
         carRepository.delete(carFromDB);
     }
 

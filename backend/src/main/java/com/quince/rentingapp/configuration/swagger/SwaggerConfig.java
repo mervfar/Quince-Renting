@@ -1,4 +1,4 @@
-package com.quince.rentingapp.configuration;
+package com.quince.rentingapp.configuration.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

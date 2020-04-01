@@ -1,12 +1,12 @@
-package com.quince.rentingapp.security;
+package com.quince.rentingapp.configuration.security;
 
 import com.quince.rentingapp.service.UserService;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.web.filter.CorsFilter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,16 +16,18 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import javax.sql.DataSource;
 
 @Configuration
 @EnableAuthorizationServer
-public class CustomAuthorizationServerConfigurerAdapter extends AuthorizationServerConfigurerAdapter {
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     private final static String CLIENT_ID = "quince";
     private final static String CLIENT_SECRET = "1234";
@@ -35,17 +37,16 @@ public class CustomAuthorizationServerConfigurerAdapter extends AuthorizationSer
     private final static int REFRESH_TOKEN_VALIDITY_TIME = 2*60*60;
 
     private final AuthenticationManager authenticationManager;
-
-
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
     private final DataSource dataSource;
-
     private final TokenStore tokenStore;
 
     private final UserService userService;
     @Lazy
-    public CustomAuthorizationServerConfigurerAdapter(@Qualifier("authenticationManagerBean") AuthenticationManager authenticationManager, @Qualifier("passwordEncoder") BCryptPasswordEncoder bCryptPasswordEncoder, DataSource dataSource, TokenStore tokenStore, UserService userService) {
+    public AuthorizationServerConfig(
+            @Qualifier("authenticationManagerBean") AuthenticationManager authenticationManager,
+            @Qualifier("passwordEncoder") BCryptPasswordEncoder bCryptPasswordEncoder,
+            DataSource dataSource, TokenStore tokenStore, UserService userService) {
         this.authenticationManager = authenticationManager;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.dataSource = dataSource;
@@ -80,7 +81,12 @@ public class CustomAuthorizationServerConfigurerAdapter extends AuthorizationSer
     }
 
     @Bean
-    public FilterRegistrationBean<CorsFilter> corsFilter(){
+    public OAuth2AccessDeniedHandler oauthAccessDeniedHandler() {
+        return new OAuth2AccessDeniedHandler();
+    }
+
+    @Bean
+    public FilterRegistrationBean  corsFilter(){
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
@@ -88,7 +94,7 @@ public class CustomAuthorizationServerConfigurerAdapter extends AuthorizationSer
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
-        FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
+        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;
     }

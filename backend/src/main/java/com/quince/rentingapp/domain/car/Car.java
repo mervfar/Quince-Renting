@@ -32,5 +32,7 @@ public class Car extends BaseEntity {
 
     private String gltfUrl;
 
+    private boolean available;
+
 
 }
