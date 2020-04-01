@@ -1,20 +1,20 @@
 package com.quince.rentingapp.service;
 
-import com.quince.rentingapp.security.user_details.CustomUserDetails;
-import com.quince.rentingapp.security.user_details.CustomUserDetailsRepository;
+import com.quince.rentingapp.domain.user.User;
+import com.quince.rentingapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RegistrationService {
 
-    private final CustomUserDetailsRepository customUserDetailsRepository;
+    private final UserRepository userRepository;
     @Autowired
-    public RegistrationService(CustomUserDetailsRepository customUserDetailsRepository) {
-        this.customUserDetailsRepository = customUserDetailsRepository;
+    public RegistrationService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public CustomUserDetails saveUser(CustomUserDetails customUserDetails){
-        return customUserDetailsRepository.save(customUserDetails);
+    public User saveUser(User user){
+        return userRepository.save(user);
     }
 }

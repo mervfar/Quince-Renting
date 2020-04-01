@@ -1,6 +1,6 @@
 package com.quince.rentingapp.security;
 
-import com.quince.rentingapp.security.user_details.CustomUserDetailsService;
+import com.quince.rentingapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,10 +17,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 
-    private final CustomUserDetailsService customUserDetailsService;
+    private final UserService userService;
     @Autowired
-    public CustomWebSecurityConfigurerAdapter(CustomUserDetailsService customUserDetailsService) {
-        this.customUserDetailsService = customUserDetailsService;
+    public CustomWebSecurityConfigurerAdapter(UserService userService) {
+        this.userService = userService;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(customUserDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+        auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Bean

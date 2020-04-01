@@ -1,6 +1,6 @@
 package com.quince.rentingapp.security;
 
-import com.quince.rentingapp.security.user_details.CustomUserDetailsService;
+import com.quince.rentingapp.service.UserService;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -43,14 +43,14 @@ public class CustomAuthorizationServerConfigurerAdapter extends AuthorizationSer
 
     private final TokenStore tokenStore;
 
-    private final CustomUserDetailsService customUserDetailsService;
+    private final UserService userService;
     @Lazy
-    public CustomAuthorizationServerConfigurerAdapter(@Qualifier("authenticationManagerBean") AuthenticationManager authenticationManager, @Qualifier("passwordEncoder") BCryptPasswordEncoder bCryptPasswordEncoder, DataSource dataSource, TokenStore tokenStore, CustomUserDetailsService customUserDetailsService) {
+    public CustomAuthorizationServerConfigurerAdapter(@Qualifier("authenticationManagerBean") AuthenticationManager authenticationManager, @Qualifier("passwordEncoder") BCryptPasswordEncoder bCryptPasswordEncoder, DataSource dataSource, TokenStore tokenStore, UserService userService) {
         this.authenticationManager = authenticationManager;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.dataSource = dataSource;
         this.tokenStore = tokenStore;
-        this.customUserDetailsService = customUserDetailsService;
+        this.userService = userService;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class CustomAuthorizationServerConfigurerAdapter extends AuthorizationSer
         endpoints
                 .tokenStore(tokenStore)
                 .authenticationManager(authenticationManager)
-                .userDetailsService(customUserDetailsService)
+                .userDetailsService(userService)
                 .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
     }
 
