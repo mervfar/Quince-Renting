@@ -20,7 +20,7 @@ public class DriverLicenseService {
         return driverLicenseRepository.findById(id).
                 orElseThrow(() -> new ResourceAccessException("License with " + id + " not found"));
     }
-    public DriverLicense findByTCno(int TC){
+    public DriverLicense findByTCno(long TC){
         return driverLicenseRepository.findByTCno(TC).
                 orElseThrow(() -> new ResourceAccessException("License with " + TC + " not found"));
     }
@@ -38,13 +38,13 @@ public class DriverLicenseService {
     public List<DriverLicense> findByValid(boolean isValid){
         return driverLicenseRepository.findByValid(isValid);
     }
-    public void saveDriverLicense(DriverLicense license){
-        driverLicenseRepository.save(license);
+    public DriverLicense saveDriverLicense(DriverLicense license){
+        return driverLicenseRepository.save(license);
     }
     public void deleteDriverLicense(DriverLicense license){
         DriverLicense driverLicense=driverLicenseRepository.findById(license.getId()).
                 orElseThrow(() -> new ResourceAccessException("License with " + license.getId() + " not found"));
-        driverLicenseRepository.delete(driverLicense);
+         driverLicenseRepository.delete(driverLicense);
 
     }
 }

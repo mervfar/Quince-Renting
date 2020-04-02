@@ -2,6 +2,7 @@ package com.quince.rentingapp.domain.driverLicense;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.quince.rentingapp.domain.BaseEntity;
+import com.quince.rentingapp.domain.user.User;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -27,6 +28,9 @@ public class DriverLicense extends BaseEntity {
     private long documentNo;
     private boolean intern;
     private boolean valid;
+
+    @OneToOne(mappedBy = "driverLicense")
+    private User user;
 
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "driverLicense",cascade = CascadeType.REMOVE)

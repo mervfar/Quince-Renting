@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface DriverLicenseRepository extends JpaRepository<DriverLicense, Long> {
 
-   Optional<DriverLicense> findByTCno(int TC);
+   Optional<DriverLicense> findByTCno(long TC);
    Optional<DriverLicense> findByDocumentNo(long documentNo);
    List<DriverLicense> findByIntern(boolean intern);
    List<DriverLicense> findByOffice(String office);
