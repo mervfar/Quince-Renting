@@ -1,6 +1,6 @@
 package com.quince.rentingapp.domain.user;
 
-public enum UserRole {
+public enum Role {
     ADMIN,
     MEMBER
 }

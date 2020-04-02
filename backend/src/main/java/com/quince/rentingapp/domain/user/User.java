@@ -1,8 +1,10 @@
 package com.quince.rentingapp.domain.user;
 
 import com.quince.rentingapp.domain.BaseEntity;
+import com.quince.rentingapp.domain.driverLicense.DriverLicense;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
@@ -24,13 +26,14 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     private String email;
     private String imageUrl;
     private long TCno;
-    private String birthDate;
+    private double birthDate;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Collection<UserRoles> roles;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "license_id", referencedColumnName = "id")
+    private DriverLicense driverLicense;
+
+
+    private Role userRole;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -39,21 +42,21 @@ public class User extends BaseEntity implements UserDetails, Serializable {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
