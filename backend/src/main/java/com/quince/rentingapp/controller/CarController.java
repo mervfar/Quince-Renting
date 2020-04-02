@@ -13,9 +13,14 @@ import java.util.List;
 @RequestMapping("/api/car")
 public class CarController {
     private final CarService carService;
+
     @GetMapping
     public List<Car> listApp() {
         return carService.findAll();
+    }
+    @GetMapping("/byId")
+    public Car listById(@RequestParam(value = "id") Long id){
+        return carService.findById(id);
     }
     @GetMapping("/byBrand")
     public List<Car> listByBrand(@RequestParam(value = "brand") CarBrand brand){
@@ -44,12 +49,12 @@ public class CarController {
     @PostMapping("/save")
     public String saveCar(@RequestBody Car car){
         carService.saveCar(car);
-        return "{'result':'OK'}";
+        return "{\"result\":\"OK\"}";
     }
     @DeleteMapping("/delete")
     public String deleteCar(@RequestParam(value = "carId") long carId){
        carService.deleteCar(carId);
-        return "{'result':'OK'}";
+        return "{\"result\":\"OK\"}";
     }
 
 
