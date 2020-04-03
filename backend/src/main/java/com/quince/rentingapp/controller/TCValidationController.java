@@ -17,12 +17,8 @@ public class TCValidationController {
             @RequestParam(value = "name") String name,
             @RequestParam(value = "surname") String surname,
             @RequestParam(value = "tc") long tcNo,
-            @RequestParam(value = "year") int year) throws ParserConfigurationException {
-
-
-
-
-        return tcValidationService.checkValidity(name,surname, tcNo,year);
+            @RequestParam(value = "year") int year)  {
+        return tcValidationService.checkValidity(name.toUpperCase(),surname.toUpperCase(), tcNo,year);
     }
 
 }
