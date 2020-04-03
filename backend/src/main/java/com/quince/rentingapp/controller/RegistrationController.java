@@ -13,7 +13,7 @@ import java.util.Collections;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/register")
+@RequestMapping("/register")
 public class RegistrationController {
 
     private final RegistrationService registrationService;
