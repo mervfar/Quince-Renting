@@ -1,7 +1,9 @@
 package com.quince.rentingapp.domain.car;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.quince.rentingapp.domain.BaseEntity;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 @Entity
@@ -33,6 +35,14 @@ public class Car extends BaseEntity {
     private String gltfUrl;
 
     private boolean available;
+
+    @JsonBackReference
+    @Transient
+    private MultipartFile imageFile;
+
+    @JsonBackReference
+    @Transient
+    private MultipartFile gltfFile;
 
 
 }

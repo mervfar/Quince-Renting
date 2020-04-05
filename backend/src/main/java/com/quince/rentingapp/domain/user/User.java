@@ -1,11 +1,13 @@
 package com.quince.rentingapp.domain.user;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.quince.rentingapp.domain.BaseEntity;
 import com.quince.rentingapp.domain.driverLicense.DriverLicense;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,6 +29,9 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     private String imageUrl;
     private long TCno;
     private double birthDate;
+    @JsonBackReference
+    @Transient
+    private MultipartFile imageFile;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "license_id", referencedColumnName = "id")
