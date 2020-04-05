@@ -18,11 +18,13 @@ import java.io.IOException;
 @RequestMapping("/api/uploadFile")
 public class UploadController {
     private final UploadService uploadService;
+    private final CurrentUserService currentUser;
 
 
     @PostMapping
     public String uploadFile(
             @RequestParam(value = "file") MultipartFile file) throws IOException {
-        return uploadService.uploadFile(file);
+        String username=currentUser.getCurrentUser().getUsername();
+        return uploadService.uploadFile(file,username);
     }
 }

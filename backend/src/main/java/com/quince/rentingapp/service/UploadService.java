@@ -13,14 +13,10 @@ import java.io.IOException;
 import java.util.Date;
 
 @Service
-@RequiredArgsConstructor
 public class UploadService {
     private Bucket storageBucket= FirebaseFactory.getInstance().getStorage();
-    private final CurrentUserService currentUser;
 
-    public String uploadFile(MultipartFile file) throws IOException {
-            User user=currentUser.getCurrentUser();
-            String username=user.getUsername();
+    public String uploadFile(MultipartFile file,String username) throws IOException {
             Date now = new Date();
             String path = username+'#'+(now.getTime());
             String CONTENT_TYPE = file.getContentType();

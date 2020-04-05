@@ -3,6 +3,7 @@ package com.quince.rentingapp.controller;
 import com.quince.rentingapp.domain.car.*;
 import com.quince.rentingapp.domain.user.User;
 import com.quince.rentingapp.service.CarService;
+import com.quince.rentingapp.service.CurrentUserService;
 import com.quince.rentingapp.service.UploadService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.List;
 public class CarController {
     private final CarService carService;
     private final UploadService uploadService;
+    private final CurrentUserService currentUser;
 
     @GetMapping
     public List<Car> listApp() {
@@ -51,9 +53,10 @@ public class CarController {
     }
     @PostMapping("/save")
     public String saveCar(@RequestBody Car car) throws IOException {
-        String imageUrl=uploadService.uploadFile(car.getImageFile());
+        String username=currentUser.getCurrentUser().getUsername();
+        String imageUrl=uploadService.uploadFile(car.getImageFile(),username);
         car.setImageUrl(imageUrl);
-        String gltfUrl=uploadService.uploadFile(car.getGltfFile());
+        String gltfUrl=uploadService.uploadFile(car.getGltfFile(),username);
         car.setGltfUrl(gltfUrl);
         carService.saveCar(car);
         return "{\"result\":\"OK\"}";
