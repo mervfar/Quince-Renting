@@ -1,4 +1,4 @@
-@import '../node_modules/antd/dist/antd.css';
+@import "../node_modules/antd/dist/antd.css";
 
 body {
   background: #43cea2; /* fallback for old browsers */
@@ -21,6 +21,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  overflow: scroll;
 }
 .card-md {
   width: 50%;
@@ -29,12 +30,14 @@ body {
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  overflow: scroll;
 }
 .card-sm {
   width: 30%;
-  height: 60%;
-  margin-top: 7em;
+  height: 67%;
+  margin-top: 5em;
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  overflow: scroll;
 }

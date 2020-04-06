@@ -1,12 +1,12 @@
-import { Card } from 'antd'
-import AppLayout from '../../components/app-layout'
+import { Card } from "antd";
+import Layout from "../../components/layout";
 
 export default function index() {
   return (
-    <AppLayout>
+    <Layout>
       <Card className="card-bg">
         <h2>Hazırlanıyor...</h2>
       </Card>
-    </AppLayout>
-  )
+    </Layout>
+  );
 }
