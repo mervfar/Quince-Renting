@@ -54,10 +54,10 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.768"
+            app:layout_constraintHorizontal_bias="0.687"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.836" />
+            app:layout_constraintVertical_bias="0.835" />
 
         <CheckBox
             android:id="@+id/checkbox2"
@@ -89,8 +89,8 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Adınız"
-                android:textColor="#050505"
-                android:textSize="20sp" />
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/editText2"
@@ -99,8 +99,8 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Soyadınız"
-                android:textColor="#050505"
-                android:textSize="20sp" />
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/mail"
@@ -109,8 +109,8 @@
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 android:text="E-mail adresiniz"
-                android:textColor="#050505"
-                android:textSize="20sp" />
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/password"
@@ -119,8 +119,8 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Şifreniz"
-                android:textColor="#050505"
-                android:textSize="20sp" />
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/confPassword"
@@ -129,8 +129,8 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Şifrenizi doğrulayın"
-                android:textColor="#050505"
-                android:textSize="20sp" />
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
