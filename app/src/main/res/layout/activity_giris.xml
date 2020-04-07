@@ -99,7 +99,7 @@
             app:layout_constraintVertical_bias="0.834">
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/sendRequest"
                 android:layout_width="330dp"
                 android:layout_height="50dp"
                 android:background="#FFEB3B"

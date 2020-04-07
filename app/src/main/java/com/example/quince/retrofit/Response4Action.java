@@ -11,7 +11,7 @@ public class Response4Action {
     private boolean success;
     @SerializedName("result")
     @Expose
-    private List<String> result =null;
+    private List<String> result = null;
 
     public boolean isSuccess() {
         return success;
