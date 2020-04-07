@@ -1,6 +1,9 @@
 package com.quince.rentingapp.controller;
 
+import com.google.api.client.util.Lists;
+import com.quince.rentingapp.domain.Utils;
 import com.quince.rentingapp.domain.user.User;
+import com.quince.rentingapp.domain.user.UserViewDTO;
 import com.quince.rentingapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,25 +17,25 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public List<User> listUsers() {
-        return  userService.findAll();
+    public List<UserViewDTO> listUsers() {
+        return convertToViewDTO(userService.findAll()) ;
     }
     @PostMapping("/byId")
-    public User listById(@RequestParam(value = "userId") Long userId){
-        return userService.findById(userId);
+    public UserViewDTO findById(@RequestParam(value = "userId") Long userId){
+        return Utils.mapper(userService.findById(userId),UserViewDTO.class);
     }
     @PostMapping ("/byTCno")
-    public User listByTcNo(@RequestParam(value = "TCNO") long tcno){
-        return userService.findByTCNo(tcno);
+    public UserViewDTO findByTcNo(@RequestParam(value = "TCNO") long tcno){
+        return Utils.mapper(userService.findByTCNo(tcno),UserViewDTO.class);
     }
 
     @PostMapping("/byBirthYear")
-    public List<User> lisByBirthYear(@RequestParam(value = "year") double year){
-        return userService.findByBirthDate(year);
+    public List<UserViewDTO> lisByBirthYear(@RequestParam(value = "year") double year){
+        return convertToViewDTO(userService.findByBirthDate(year));
     }
     @PostMapping("/byUsename")
-    public User findByUsername(@RequestParam(value = "username") String username){
-        return userService.findByUsername(username);
+    public UserViewDTO findByUsername(@RequestParam(value = "username") String username){
+        return Utils.mapper(userService.findByUsername(username),UserViewDTO.class);
     }
     @PostMapping("/existByUsername")
     public Boolean ifExistByUsername(@RequestParam(value = "username") String username){
@@ -41,5 +44,12 @@ public class UserController {
     @PostMapping("/existByEmail")
     public Boolean ifExistByEmail(@RequestParam(value = "email") String email){
         return userService.existsByEmail(email);
+    }
+    private List<UserViewDTO> convertToViewDTO(List<User> userList){
+        List<UserViewDTO> userViewDTOS=Lists.newArrayList();
+        for (User user:userList){
+            userViewDTOS.add(Utils.mapper(user,UserViewDTO.class));
+        }
+        return userViewDTOS;
     }
 }

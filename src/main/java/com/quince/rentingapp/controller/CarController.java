@@ -1,12 +1,16 @@
 package com.quince.rentingapp.controller;
 
+import com.google.api.client.util.Lists;
+import com.quince.rentingapp.domain.Utils;
 import com.quince.rentingapp.domain.car.*;
 import com.quince.rentingapp.domain.user.User;
+import com.quince.rentingapp.domain.user.UserViewDTO;
 import com.quince.rentingapp.service.CarService;
 import com.quince.rentingapp.service.CurrentUserService;
 import com.quince.rentingapp.service.UploadService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,51 +24,65 @@ public class CarController {
     private final CurrentUserService currentUser;
 
     @GetMapping
-    public List<Car> listApp() {
-        return carService.findAll();
+    public List<CarViewDTO> listAll() {
+        return convertToViewDTO(carService.findAll());
     }
-    @GetMapping("/byId")
-    public Car listById(@RequestParam(value = "id") Long id){
-        return carService.findById(id);
+    @GetMapping("/byId/{id}")
+    public CarViewDTO findById(@PathVariable(value = "id") Long id){
+        return Utils.mapper(carService.findById(id),CarViewDTO.class);
     }
-    @GetMapping("/byBrand")
-    public List<Car> listByBrand(@RequestParam(value = "brand") CarBrand brand){
-        return carService.findByBrand(brand);
+    @GetMapping("/byBrand/{brand}")
+    public List<CarViewDTO> listByBrand(@PathVariable(value = "brand") CarBrand brand){
+        return convertToViewDTO(carService.findByBrand(brand));
     }
-    @GetMapping("/byYear")
-    public List<Car> listByYear(@RequestParam(value = "year") double year){
-        return carService.findByYear(year);
+    @GetMapping("/byYear/{year}")
+    public List<CarViewDTO> listByYear(@PathVariable(value = "year") double year){
+        return convertToViewDTO(carService.findByYear(year));
     }
-    @GetMapping("/byBody")
-    public List<Car> listByBody(@RequestParam(value = "body") CarBody body){
-        return carService.findByBody(body);
+    @GetMapping("/byBody/{body}")
+    public List<CarViewDTO> listByBody(@PathVariable(value = "body") CarBody body){
+        return convertToViewDTO(carService.findByBody(body));
     }
-    @GetMapping("/byGear")
-    public List<Car> listByGear(@RequestParam(value = "gear") CarTransmissionType gear){
-        return carService.findByTransmission(gear);
+    @GetMapping("/byGear/{gear}")
+    public List<CarViewDTO> listByGear(@PathVariable(value = "gear") CarTransmissionType gear){
+        return convertToViewDTO(carService.findByTransmission(gear));
     }
-    @GetMapping("/byFuel")
-    public List<Car> listByFuel(@RequestParam(value = "fuel") CarFuelType fuel){
-        return carService.findByFuel(fuel);
+    @GetMapping("/byFuel/{fuel}")
+    public List<CarViewDTO> listByFuel(@PathVariable(value = "fuel") CarFuelType fuel){
+        return convertToViewDTO(carService.findByFuel(fuel));
     }
-    @GetMapping("/availables")
-    public List<Car> listAvailables(@RequestParam(value = "isAvailable") boolean isAvailable){
-        return carService.findAvailableCars(isAvailable);
+    @GetMapping("/availables/{isAvailable}")
+    public List<CarViewDTO> listAvailables(@PathVariable(value = "isAvailable") boolean isAvailable){
+        return convertToViewDTO(carService.findAvailableCars(isAvailable));
     }
     @PostMapping("/save")
-    public String saveCar(@RequestBody Car car) throws IOException {
+    public String save(@RequestBody CarAddDTO carAddDTO,
+                       @RequestParam(value = "image") MultipartFile image,
+                       @RequestParam(value = "gltf",required = false) MultipartFile gltf) throws IOException {
+        Car car=Utils.mapper(carAddDTO,Car.class);
         String username=currentUser.getCurrentUser().getUsername();
-        String imageUrl=uploadService.uploadFile(car.getImageFile(),username);
+        String imageUrl=uploadService.uploadFile(image,username);
         car.setImageUrl(imageUrl);
-        String gltfUrl=uploadService.uploadFile(car.getGltfFile(),username);
+        String gltfUrl=uploadService.uploadFile(gltf,username);
         car.setGltfUrl(gltfUrl);
         carService.saveCar(car);
         return "{\"result\":\"OK\"}";
     }
-    @DeleteMapping("/delete")
-    public String deleteCar(@RequestParam(value = "carId") long carId){
+    @GetMapping("/save")
+    public CarAddDTO savePrepare(){
+        return new CarAddDTO();
+    }
+    @DeleteMapping("/delete/{carId}")
+    public String deleteCar(@PathVariable(value = "carId") long carId){
        carService.deleteCar(carId);
         return "{\"result\":\"OK\"}";
+    }
+    private List<CarViewDTO> convertToViewDTO(List<Car> carList){
+        List<CarViewDTO> CarViewDTOs= Lists.newArrayList();
+        for (Car car:carList){
+            CarViewDTOs.add(Utils.mapper(car,CarViewDTO.class));
+        }
+        return CarViewDTOs;
     }
 
 

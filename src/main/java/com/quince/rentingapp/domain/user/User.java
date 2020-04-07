@@ -28,7 +28,7 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     private String email;
     private String imageUrl;
     private long TCno;
-    private double birthDate;
+    private int birthDate;
     @JsonBackReference
     @Transient
     private MultipartFile imageFile;

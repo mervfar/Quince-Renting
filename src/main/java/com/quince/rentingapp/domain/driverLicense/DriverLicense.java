@@ -24,7 +24,7 @@ public class DriverLicense extends BaseEntity {
     private String dateOfIssue;
     private String validTime;
     private String office;
-    private int TCno;
+    private long TCno;
     private long documentNo;
     private boolean intern;
     private boolean valid;
