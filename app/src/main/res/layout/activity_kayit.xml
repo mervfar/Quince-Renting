@@ -55,32 +55,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
-        <Button
-            android:id="@+id/gorunmez_buton3"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:background="@drawable/bayaz"
-            android:drawableTop="@drawable/ic_visibility_off_black_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.971"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.572" />
-
-        <Button
-            android:id="@+id/gorunmez_buton2"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:background="@drawable/bayaz"
-            android:drawableTop="@drawable/ic_visibility_off_black_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.971"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.465" />
-
         <TextView
             android:id="@+id/textView4"
             android:layout_width="331dp"
@@ -122,9 +96,10 @@
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="75sp"
+                android:drawableLeft="@drawable/ic_person_black_24dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Adınız"
+                android:text="  Adınız"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="20sp" />
 
@@ -134,7 +109,7 @@
                 android:layout_height="75sp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Soyadınız"
+                android:text="       Soyadınız"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="20sp" />
 
@@ -142,9 +117,10 @@
                 android:id="@+id/mail"
                 android:layout_width="match_parent"
                 android:layout_height="75sp"
+                android:drawableLeft="@drawable/ic_mail_black_24dp"
                 android:ems="10"
                 android:inputType="textEmailAddress"
-                android:text="E-mail adresiniz"
+                android:text="  E -mail adresiniz"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="20sp" />
 
@@ -152,9 +128,10 @@
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="75sp"
+                android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Şifreniz"
+                android:text="  Şifreniz"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="20sp" />
 
@@ -164,7 +141,7 @@
                 android:layout_height="75sp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Şifrenizi doğrulayın"
+                android:text="       Şifrenizi doğrulayın"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="20sp" />
 

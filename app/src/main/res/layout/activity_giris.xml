@@ -89,8 +89,8 @@
             app:layout_constraintVertical_bias="0.275" />
 
         <LinearLayout
-            android:layout_width="333dp"
-            android:layout_height="107dp"
+            android:layout_width="372dp"
+            android:layout_height="157dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -99,7 +99,7 @@
             app:layout_constraintVertical_bias="0.834">
 
             <Button
-                android:id="@+id/sendRequest2"
+                android:id="@+id/sendRequest"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="#FFEB3B"
@@ -112,29 +112,27 @@
 
             <Button
                 android:id="@+id/kayit"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/bayaz"
                 android:backgroundTint="@android:color/white"
-                android:text="KAYIT OL"
+                android:text="ÜYE OL"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/uye_olma"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bayaz"
+                android:backgroundTint="@android:color/white"
+                android:text="ÜYE OLMADAN DEVAM ET"
                 android:textColor="@android:color/background_dark"
                 android:textSize="18sp"
                 android:textStyle="normal" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/sendRequest"
-            android:layout_width="330dp"
-            android:layout_height="50dp"
-            android:background="@drawable/bayaz"
-            android:text="Üye Olmadan Devam Et"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textDirection="ltr"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            tools:layout_editor_absoluteX="39dp"
-            tools:layout_editor_absoluteY="620dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -33,9 +33,12 @@ public class giris extends AppCompatActivity {
         bntnOfSendRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), anaSayfa.class);
+                startActivity(intent);
                 user = new String();
-                user.setType(type);
-                sendRequest(user);
+                //user.setType(type);
+                //sendRequest(user);
 
             }
         });
@@ -49,8 +52,18 @@ public class giris extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button uye_olma = (Button) findViewById(R.id.uye_olma);
+        kayit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), anaSayfa.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
+    /*
     public void sendRequest(String user) {
         apiService.savePost(user).enqueue(new Callback<Response4Action>() {
 
@@ -67,4 +80,6 @@ public class giris extends AppCompatActivity {
 
         });
     }
+
+    */
 }

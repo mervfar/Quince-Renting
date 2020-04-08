@@ -20,6 +20,9 @@ import androidx.fragment.app.Fragment;
 
 public class fragmentB extends Fragment {
 
+
+    Button kayit;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -27,6 +30,17 @@ public class fragmentB extends Fragment {
         View view = inflater.inflate(R.layout.fragment_b, container, false);
 
 
+        kayit = (Button) view.findViewById(R.id.kayit);
+        kayit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), giris.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
+
+
     }
