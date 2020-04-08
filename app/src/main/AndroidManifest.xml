@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".giris"></activity>
+        <activity
+            android:name=".anaSayfa"
+            android:label="@string/title_activity_ana_sayfa"></activity>
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/color" />
+
+        <activity android:name=".giris" />
         <activity android:name=".kayit" />
         <activity android:name=".karsilama" />
         <activity android:name=".MainActivity">

@@ -89,8 +89,8 @@
             app:layout_constraintVertical_bias="0.275" />
 
         <LinearLayout
-            android:layout_width="333dp"
-            android:layout_height="107dp"
+            android:layout_width="384dp"
+            android:layout_height="153dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +100,7 @@
 
             <Button
                 android:id="@+id/sendRequest"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="#FFEB3B"
                 android:text="Giriş Yap"
@@ -112,11 +112,22 @@
 
             <Button
                 android:id="@+id/kayit"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/bayaz"
                 android:backgroundTint="@android:color/white"
-                android:text="KAYIT OL"
+                android:text="ÜYE OL"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/uye_olma"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bayaz"
+                android:backgroundTint="@android:color/white"
+                android:text="ÜYE OLMADAN DEVAM ET"
                 android:textColor="@android:color/background_dark"
                 android:textSize="18sp"
                 android:textStyle="normal" />
