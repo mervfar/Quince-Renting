@@ -8,6 +8,6 @@ import tr.gov.nvi.tckimlik.KPSPublic;
 @Service
 public class TCValidationService {
     public boolean checkValidity(TcValidationDTO person){
-        return new KPSPublic().getKPSPublicSoap().tcKimlikNoDogrula(person.getTcNo(), person.getName(), person.getSurname(), person.getYear());
+        return new KPSPublic().getKPSPublicSoap().tcKimlikNoDogrula(person.getTcNo(), person.getName().toUpperCase(), person.getSurname().toUpperCase(), person.getYear());
     }
 }
