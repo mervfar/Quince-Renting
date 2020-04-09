@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/anasayfa"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="AnaSayfa" />
+
+
+    <item
+        android:id="@+id/hesap"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Hesabım" />
+
+
+
+    <item
+        android:id="@+id/ayarlar"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="Ayarlar" />
+</menu>

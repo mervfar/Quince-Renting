@@ -53,7 +53,7 @@ public class giris extends AppCompatActivity {
             }
         });
         Button uye_olma = (Button) findViewById(R.id.uye_olma);
-        kayit.setOnClickListener(new View.OnClickListener() {
+        uye_olma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), anaSayfa.class);
