@@ -1,4 +1,5 @@
-import AppLayout from '../../components/app-layout'
+import React, { useState } from "react";
+import Layout from "../../components/Layout";
 import {
   Card,
   Input,
@@ -6,107 +7,104 @@ import {
   Checkbox,
   Steps,
   Form,
-  AutoComplete,
-  Row,
-  Col,
-  Cascader,
   Select,
   Tooltip,
-  Divider
-} from 'antd'
-import { QuestionCircleOutlined } from '@ant-design/icons'
-import { useEffect, useState } from 'react'
-import styles from './register.module.css'
-const { Step } = Steps
-const { Option } = Select
-const AutoCompleteOption = AutoComplete.Option
+  Divider,
+  Result,
+} from "antd";
+import { QuestionCircleOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import styles from "./register.module.scss";
+import { v4 as uuid } from "uuid";
+const { Step } = Steps;
+const { Option } = Select;
 const steps = [
   {
-    title: 'Kişisel bilgiler',
-    content: 'First-content'
+    title: "Kişisel bilgiler",
+    content: "First-content",
   },
   {
-    title: 'Ehliyet bilgileri',
-    content: 'Second-content'
+    title: "Ehliyet bilgileri",
+    content: "Second-content",
   },
   {
-    title: 'Her şey hazır!',
-    content: 'Last-content'
-  }
-]
+    title: "Her şey hazır!",
+    content: "Last-content",
+  },
+];
 const formItemLayout = {
   labelCol: {
     xs: { span: 16 },
-    sm: { span: 8 }
+    sm: { span: 8 },
   },
   wrapperCol: {
     xs: { span: 24 },
-    sm: { span: 8 }
-  }
-}
+    sm: { span: 8 },
+  },
+};
 const tailFormItemLayout = {
   wrapperCol: {
     xs: {
       span: 24,
-      offset: 0
+      offset: 0,
     },
     sm: {
       span: 16,
-      offset: 8
-    }
-  }
-}
-export default function register() {
-  const [current, setcurrent] = useState(0)
+      offset: 8,
+    },
+  },
+};
+export default function Register() {
+  const [current, setcurrent] = useState(0);
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select style={{ width: 70 }}>
         <Option value="90">+90</Option>
       </Select>
     </Form.Item>
-  )
+  );
   const onFinish = (values) => {
-    console.log('Received values of form: ', values)
-  }
+    console.log("Received values of form: ", values);
+  };
   const next = () => {
-    setcurrent(current + 1)
-  }
+    setcurrent(current + 1);
+  };
 
   const prev = () => {
-    setcurrent(current - 1)
-  }
+    setcurrent(current - 1);
+  };
   return (
-    <AppLayout>
+    <Layout>
       <Card
-        className="card-bg"
+        className="card card-bg"
         title="Kayıt Ol"
         extra={
           current < steps.length - 1 && current <= 0 ? (
             <Button type="primary" onClick={() => next()}>
-              Next
+              İleri
             </Button>
           ) : current < steps.length - 1 && current > 0 ? (
             <>
               <Button style={{ marginRight: 8 }} onClick={() => prev()}>
-                Previous
+                Geri
               </Button>
               <Button type="primary" onClick={() => next()}>
-                Next
+                İleri
               </Button>
             </>
           ) : current === steps.length - 1 ? (
             <Button
               type="primary"
-              onClick={() => console.log('Processing complete!')}
+              onClick={() => console.log("Processing complete!")}
             >
-              Done
+              Bitti
             </Button>
           ) : null
         }
       >
         <Steps current={current}>
           {steps.map((item) => (
-            <Step key={item.title} title={item.title} />
+            <Step key={uuid()} title={item.title} />
           ))}
         </Steps>
         <div className={styles.content}>
@@ -116,23 +114,23 @@ export default function register() {
               name="register"
               onFinish={onFinish}
               initialValues={{
-                prefix: '90'
+                prefix: "90",
               }}
               scrollToFirstError
-              style={{ overflow: 'scroll' }}
+              style={{ overflow: "scroll" }}
             >
               <Form.Item
                 name="email"
                 label="E-Posta"
                 rules={[
                   {
-                    type: 'email',
-                    message: 'Lütfen geçerli bir e-posta adresi giriniz!'
+                    type: "email",
+                    message: "Lütfen geçerli bir e-posta adresi giriniz!",
                   },
                   {
                     required: true,
-                    message: 'Lütfen e-posta adresinizi giriniz!'
-                  }
+                    message: "Lütfen e-posta adresinizi giriniz!",
+                  },
                 ]}
               >
                 <Input />
@@ -143,8 +141,8 @@ export default function register() {
                 rules={[
                   {
                     required: true,
-                    message: 'Lütfen parola giriniz!'
-                  }
+                    message: "Lütfen parola giriniz!",
+                  },
                 ]}
                 hasFeedback
               >
@@ -153,21 +151,21 @@ export default function register() {
               <Form.Item
                 name="confirm"
                 label="Parola Doğrula"
-                dependencies={['password']}
+                dependencies={["password"]}
                 hasFeedback
                 rules={[
                   {
                     required: true,
-                    message: 'Lütfen parolanızı yeniden yazın!'
+                    message: "Lütfen parolanızı yeniden yazın!",
                   },
                   ({ getFieldValue }) => ({
                     validator(rule, value) {
-                      if (!value || getFieldValue('password') === value) {
-                        return Promise.resolve()
+                      if (!value || getFieldValue("password") === value) {
+                        return Promise.resolve();
                       }
-                      return Promise.reject('Girilen parolalar eşleşmiyor!')
-                    }
-                  })
+                      return Promise.reject("Girilen parolalar eşleşmiyor!");
+                    },
+                  }),
                 ]}
               >
                 <Input.Password />
@@ -185,9 +183,9 @@ export default function register() {
                 rules={[
                   {
                     required: true,
-                    message: 'Lütfen bir kullanıcı adı giriniz!',
-                    whitespace: true
-                  }
+                    message: "Lütfen bir kullanıcı adı giriniz!",
+                    whitespace: true,
+                  },
                 ]}
               >
                 <Input />
@@ -198,11 +196,11 @@ export default function register() {
                 rules={[
                   {
                     required: true,
-                    message: 'Lütfen telefon numaranızı giriniz!'
-                  }
+                    message: "Lütfen telefon numaranızı giriniz!",
+                  },
                 ]}
               >
-                <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
+                <Input addonBefore={prefixSelector} style={{ width: "100%" }} />
               </Form.Item>
 
               <Form.Item
@@ -211,7 +209,7 @@ export default function register() {
                 {...tailFormItemLayout}
               >
                 <Checkbox>
-                  Kullanım sözleşmesini okudum. <a href="">Kabul ediyorum.</a>
+                  Kullanım sözleşmesini okudum. <a href="!#">Kabul ediyorum.</a>
                 </Checkbox>
               </Form.Item>
 
@@ -222,7 +220,7 @@ export default function register() {
                             </Form.Item> */}
               <Divider />
               <p>
-                Zaten bir hesabınız var mı?{' '}
+                Zaten bir hesabınız var mı?{" "}
                 <Button type="link">Giriş yapın!</Button>
               </p>
             </Form>
@@ -232,23 +230,23 @@ export default function register() {
               name="register"
               onFinish={onFinish}
               initialValues={{
-                prefix: '90'
+                prefix: "90",
               }}
               scrollToFirstError
-              style={{ overflow: 'scroll' }}
+              style={{ overflow: "scroll" }}
             >
               <Form.Item
                 name="name"
                 label="İsim"
                 rules={[
                   {
-                    type: 'name',
-                    message: 'Lütfen geçerli bir isim ve soyisim giriniz!'
+                    type: "name",
+                    message: "Lütfen geçerli bir isim ve soyisim giriniz!",
                   },
                   {
                     required: true,
-                    message: 'Lütfen isminizi ve soyisminizi giriniz!'
-                  }
+                    message: "Lütfen isminizi ve soyisminizi giriniz!",
+                  },
                 ]}
               >
                 <Input />
@@ -259,8 +257,8 @@ export default function register() {
                 rules={[
                   {
                     required: true,
-                    message: 'Lütfen doğum tarihinizi giriniz!'
-                  }
+                    message: "Lütfen doğum tarihinizi giriniz!",
+                  },
                 ]}
                 hasFeedback
               >
@@ -280,9 +278,9 @@ export default function register() {
                   {
                     required: true,
                     message:
-                      'Lütfen ehliyetinizin geçerlilik tarihini giriniz!',
-                    whitespace: true
-                  }
+                      "Lütfen ehliyetinizin geçerlilik tarihini giriniz!",
+                    whitespace: true,
+                  },
                 ]}
               >
                 <Input />
@@ -300,9 +298,9 @@ export default function register() {
                 rules={[
                   {
                     required: true,
-                    message: 'Lütfen ehliyetinizin seri numarasını giriniz!',
-                    whitespace: true
-                  }
+                    message: "Lütfen ehliyetinizin seri numarasını giriniz!",
+                    whitespace: true,
+                  },
                 ]}
               >
                 <Input />
@@ -313,8 +311,8 @@ export default function register() {
                 rules={[
                   {
                     required: true,
-                    message: 'Lütfen TC kimlik numaranızı giriniz!'
-                  }
+                    message: "Lütfen TC kimlik numaranızı giriniz!",
+                  },
                 ]}
                 hasFeedback
               >
@@ -327,13 +325,27 @@ export default function register() {
               </Form.Item>
               <Divider />
               <p>
-                Zaten bir hesabınız var mı?{' '}
+                Zaten bir hesabınız var mı?{" "}
                 <Button type="link">Giriş yapın!</Button>
               </p>
             </Form>
+          ) : current === 2 ? (
+            <Result
+              status="success"
+              title="Artık aramızdasın!"
+              subTitle="Merhaba Anıl! Üyeliğini oluşturduk, artık kampanyalarımız ve size özel tekliflerimizden yararlanabileceksin. Tebrikler!"
+              extra={[
+                <Link to="/renting">
+                  <Button type="primary">Hemen Araç Kirala!</Button>
+                </Link>,
+                <Link to="/profile">
+                  <Button>Hesabım</Button>
+                </Link>,
+              ]}
+            />
           ) : null}
         </div>
       </Card>
-    </AppLayout>
-  )
+    </Layout>
+  );
 }
