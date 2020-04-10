@@ -1,6 +1,18 @@
 <resources>
-    <string name="app_name">quince</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="sehir_array">
+        <item>Şehir seçiniz</item>
+        <item>İstanbul</item>
+        <item>Ankara</item>
+        <item>İzmir</item>
+        <item>Amasya</item>
+        <item>Bursa</item>
+        <item>Kocaeli</item>
+        <item>Yalova</item>
+        <item>Bolu</item>
+        <item>Manisa</item>
+        <item>Antalya</item>
+        <item>Adana</item>
+    </string-array>
+
 </resources>

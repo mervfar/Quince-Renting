@@ -24,7 +24,7 @@ public class kayit extends AppCompatActivity {
         kisi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new  fragmentA();
+                Fragment fragment = new fKayit();
                 FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.contain , fragment).commit();
 
@@ -34,7 +34,7 @@ public class kayit extends AppCompatActivity {
         ehliyet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new fragmentB();
+                Fragment fragment = new fEhliyet();
                 FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.contain , fragment).commit();
 
