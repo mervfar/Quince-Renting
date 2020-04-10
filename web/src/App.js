@@ -1,6 +1,8 @@
-import AppLayout from "../components/layout";
+import React from "react";
+import Layout from "./components/Layout";
 import { Button, Space, Card, Divider } from "antd";
-import Link from "next/link";
+import { Link } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 
 const buttons = [
   { location: "/auth/login", title: "Giriş" },
@@ -8,12 +10,11 @@ const buttons = [
   { location: "/renting", title: "Araç Kirala" },
   { location: "/profile", title: "Profil" },
 ];
-
-export default function Index() {
+export default function App() {
   const generateButtons = () => {
-    return buttons.map((e, index) => {
+    return buttons.map((e) => {
       return (
-        <Link href={e.location} key={index}>
+        <Link to={e.location} key={uuid()}>
           <Button type="primary" size="large" block>
             {e.title}
           </Button>
@@ -22,9 +23,9 @@ export default function Index() {
     });
   };
   return (
-    <AppLayout>
+    <Layout>
       <Card
-        className="card-md"
+        className="card card-md"
         style={{
           display: "flex",
           justifyContent: "center",
@@ -41,6 +42,6 @@ export default function Index() {
           {generateButtons()}
         </Space>
       </Card>
-    </AppLayout>
+    </Layout>
   );
 }

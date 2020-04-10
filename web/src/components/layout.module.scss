@@ -1,0 +1,73 @@
+.body {
+  background: #43cea2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #185a9d,
+    #43cea2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #185a9d,
+    #43cea2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.content {
+  padding: 0 50px;
+  height: 85vh;
+  width: 100vw;
+}
+.logo {
+  height: 3em;
+  margin-left: 2em;
+  transition: all 0.3s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+.authButtonContainer {
+  display: flex;
+  margin-right: 7em;
+  margin-top: 1.4em;
+}
+.signInButton {
+  display: inline;
+  color: white;
+}
+.signInButton:hover {
+  color: #e6966f;
+}
+.signInButton:focus {
+  color: #e6966f;
+}
+.signInButton:active {
+  color: #e6966f;
+}
+.signUpButton {
+  display: inline;
+  background: #f37335; /* fallback for old browsers */
+  border-radius: 5px;
+  border: 2px solid #f37335;
+  color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.signUpButton:hover {
+  background: #f37335; /* fallback for old browsers */
+  border-radius: 5px;
+  border: 0px solid #f37335;
+  color: white;
+}
+.signUpButton:focus {
+  background: #f37335; /* fallback for old browsers */
+  border-radius: 5px;
+  border: 0px solid #f37335;
+  color: white;
+  box-shadow: none;
+}
+.signUpButton:active {
+  background: #f37335; /* fallback for old browsers */
+  border-radius: 5px;
+  border: 0px solid #f37335;
+  color: white;
+  box-shadow: none;
+}

@@ -1,0 +1,16 @@
+.ant-input-search {
+  border-radius: 50px;
+  width: 100%;
+  height: 3em;
+}
+.ant-input-suffix {
+  align-self: center;
+}
+.ant-input {
+  text-align: center;
+}
+.ant-input-group > .ant-input:first-child,
+.ant-input-group-addon:first-child {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}

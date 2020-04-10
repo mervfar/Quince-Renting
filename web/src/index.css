@@ -1,5 +1,4 @@
 @import "../node_modules/antd/dist/antd.css";
-
 body {
   background: #43cea2; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -13,31 +12,31 @@ body {
     #43cea2
   ) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
-.card-bg {
-  width: 95%;
-  height: 90%;
-  margin-top: 2em;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.card {
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   overflow: scroll;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+.card-bg {
+  width: 95%;
+  height: 90%;
+  margin-top: 2em;
 }
 .card-md {
   width: 50%;
   height: 75%;
   margin-top: 4em;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  overflow: scroll;
 }
 .card-sm {
   width: 30%;
   height: 67%;
   margin-top: 5em;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  overflow: scroll;
 }

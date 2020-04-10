@@ -1,6 +1,8 @@
-import Layout from "../../components/layout";
+import React from "react";
+import Layout from "../../components/Layout";
 import { Form, Input, Button, Checkbox, Divider, Card } from "antd";
-import Link from "next/link";
+import { Link } from "react-router-dom";
+import { SignIn } from "../../services/AuthService";
 
 const layout = {
   labelCol: {
@@ -16,10 +18,10 @@ const tailLayout = {
     span: 16,
   },
 };
-
 export default function Login() {
   const onFinish = (values) => {
     console.log("Success:", values);
+    return SignIn(values);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -28,7 +30,7 @@ export default function Login() {
   return (
     <Layout>
       <Card
-        className="card-sm"
+        className="card card-sm"
         style={{
           display: "flex",
           justifyContent: "center",
@@ -88,7 +90,7 @@ export default function Login() {
           <Divider />
           <p>
             Hala hesabınız yok mu?{" "}
-            <Link href="/auth/register">
+            <Link to="/auth/register">
               <Button type="link">Kayıt Ol!</Button>
             </Link>
           </p>

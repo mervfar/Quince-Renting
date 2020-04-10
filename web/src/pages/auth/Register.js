@@ -1,4 +1,5 @@
-import Layout from "../../components/layout";
+import React, { useState } from "react";
+import Layout from "../../components/Layout";
 import {
   Card,
   Input,
@@ -6,19 +7,17 @@ import {
   Checkbox,
   Steps,
   Form,
-  AutoComplete,
   Select,
   Tooltip,
   Divider,
   Result,
 } from "antd";
 import { QuestionCircleOutlined } from "@ant-design/icons";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import styles from "./register.module.css";
+import { Link } from "react-router-dom";
+import styles from "./register.module.scss";
+import { v4 as uuid } from "uuid";
 const { Step } = Steps;
 const { Option } = Select;
-const AutoCompleteOption = AutoComplete.Option;
 const steps = [
   {
     title: "Kişisel bilgiler",
@@ -55,7 +54,7 @@ const tailFormItemLayout = {
     },
   },
 };
-export default function register() {
+export default function Register() {
   const [current, setcurrent] = useState(0);
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
@@ -77,7 +76,7 @@ export default function register() {
   return (
     <Layout>
       <Card
-        className="card-bg"
+        className="card card-bg"
         title="Kayıt Ol"
         extra={
           current < steps.length - 1 && current <= 0 ? (
@@ -105,7 +104,7 @@ export default function register() {
       >
         <Steps current={current}>
           {steps.map((item) => (
-            <Step key={item.title} title={item.title} />
+            <Step key={uuid()} title={item.title} />
           ))}
         </Steps>
         <div className={styles.content}>
@@ -210,7 +209,7 @@ export default function register() {
                 {...tailFormItemLayout}
               >
                 <Checkbox>
-                  Kullanım sözleşmesini okudum. <a href="">Kabul ediyorum.</a>
+                  Kullanım sözleşmesini okudum. <a href="!#">Kabul ediyorum.</a>
                 </Checkbox>
               </Form.Item>
 
@@ -336,13 +335,11 @@ export default function register() {
               title="Artık aramızdasın!"
               subTitle="Merhaba Anıl! Üyeliğini oluşturduk, artık kampanyalarımız ve size özel tekliflerimizden yararlanabileceksin. Tebrikler!"
               extra={[
-                <Link href="/renting">
-                  <Button type="primary" key="console">
-                    Hemen Araç Kirala!
-                  </Button>
+                <Link to="/renting">
+                  <Button type="primary">Hemen Araç Kirala!</Button>
                 </Link>,
-                <Link href="profile">
-                  <Button key="buy">Hesabım</Button>
+                <Link to="/profile">
+                  <Button>Hesabım</Button>
                 </Link>,
               ]}
             />
