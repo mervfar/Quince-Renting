@@ -8,7 +8,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".anaSayfa"></activity>
+        <activity android:name=".araba"></activity>
+        <activity android:name=".anaSayfa" />
         <activity android:name=".giris" />
         <activity android:name=".kayit" />
         <activity android:name=".karsilama" />

@@ -1,7 +1,7 @@
 package com.example.quince.retrofit;
 
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+        import retrofit2.Retrofit;
+        import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static Retrofit retrofit=null;

@@ -46,8 +46,8 @@
             app:layout_constraintVertical_bias="0.83" />
 
         <LinearLayout
-            android:layout_width="346dp"
-            android:layout_height="392dp"
+            android:layout_width="348dp"
+            android:layout_height="364dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +59,7 @@
             <EditText
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
-                android:layout_height="75sp"
+                android:layout_height="70sp"
                 android:drawableLeft="@drawable/ic_person_black_24dp"
                 android:ems="10"
                 android:inputType="textPersonName"
@@ -70,7 +70,7 @@
             <EditText
                 android:id="@+id/editText2"
                 android:layout_width="match_parent"
-                android:layout_height="75sp"
+                android:layout_height="70sp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="       Soyadınız"
@@ -80,7 +80,7 @@
             <EditText
                 android:id="@+id/mail"
                 android:layout_width="match_parent"
-                android:layout_height="75sp"
+                android:layout_height="70sp"
                 android:drawableLeft="@drawable/ic_mail_black_24dp"
                 android:ems="10"
                 android:inputType="textEmailAddress"
@@ -91,7 +91,7 @@
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="75sp"
+                android:layout_height="70sp"
                 android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
                 android:ems="10"
                 android:inputType="textPersonName"
@@ -102,7 +102,7 @@
             <EditText
                 android:id="@+id/confPassword"
                 android:layout_width="match_parent"
-                android:layout_height="75sp"
+                android:layout_height="70sp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="       Şifrenizi doğrulayın"
