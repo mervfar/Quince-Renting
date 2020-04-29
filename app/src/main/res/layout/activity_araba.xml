@@ -5,10 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bayaz"
+    android:orientation="vertical"
     tools:context=".araba">
+
+
     <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listView" >
-    </ListView>
+        android:layout_height="match_parent" />
+
 </LinearLayout>

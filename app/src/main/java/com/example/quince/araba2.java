@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 public class araba2 extends AppCompatActivity {
 
-    ImageView imageView;
-    TextView title, description;
+    ImageView image;
+    TextView marka, fiyat, gear , fuel ,year;
     int position;
 
     @Override
@@ -24,26 +24,34 @@ public class araba2 extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
-            // aslo set in menifest
         }
 
-        imageView = findViewById(R.id.another_imageView);
-        title = findViewById(R.id.marka);
-        description = findViewById(R.id.fiyat);
+        image = findViewById(R.id.image);
+        marka = findViewById(R.id.marka);
+        fiyat = findViewById(R.id.fiyat);
+        gear  = findViewById(R.id.gear);
+        fuel  = findViewById(R.id.fuel);
+        year  = findViewById(R.id.year);
 
         if (position == 0) {
             Intent intent = getIntent();
 
             Bundle bundle = this.getIntent().getExtras();
             int pic = bundle.getInt("image");
-            String aTitle = intent.getStringExtra("title");
-            String aDescription = intent.getStringExtra("description");
+            String amarka = intent.getStringExtra("marka");
+            String afiyat = intent.getStringExtra("fiyat");
+            String agear = intent.getStringExtra("gear");
+            String afuel = intent.getStringExtra("fuel");
+            String ayear = intent.getStringExtra("year");
 
-            imageView.setImageResource(pic);
-            title.setText(aTitle);
-            description.setText(aDescription);
+            image.setImageResource(pic);
+            marka.setText(amarka);
+            fiyat.setText(afiyat);
+            gear.setText(agear);
+            fuel.setText(afuel);
+            year.setText(ayear);
 
-            actionBar.setTitle(aTitle);
+            actionBar.setTitle(amarka);
         }
 
         if (position == 1) {
@@ -51,14 +59,20 @@ public class araba2 extends AppCompatActivity {
 
             Bundle bundle = this.getIntent().getExtras();
             int pic = bundle.getInt("image");
-            String aTitle = intent.getStringExtra("title");
-            String aDescription = intent.getStringExtra("description");
+            String amarka = intent.getStringExtra("marka");
+            String afiyat = intent.getStringExtra("fiyat");
+            String agear = intent.getStringExtra("gear");
+            String afuel = intent.getStringExtra("fuel");
+            String ayear = intent.getStringExtra("year");
 
-            imageView.setImageResource(pic);
-            title.setText(aTitle);
-            description.setText(aDescription);
+            image.setImageResource(pic);
+            marka.setText(amarka);
+            fiyat.setText(afiyat);
+            gear.setText(agear);
+            fuel.setText(afuel);
+            year.setText(ayear);
 
-            actionBar.setTitle(aTitle);
+            actionBar.setTitle(amarka);
         }
 
         if (position == 2) {
@@ -66,14 +80,20 @@ public class araba2 extends AppCompatActivity {
 
             Bundle bundle = this.getIntent().getExtras();
             int pic = bundle.getInt("image");
-            String aTitle = intent.getStringExtra("title");
-            String aDescription = intent.getStringExtra("description");
+            String amarka = intent.getStringExtra("marka");
+            String afiyat = intent.getStringExtra("fiyat");
+            String agear = intent.getStringExtra("gear");
+            String afuel = intent.getStringExtra("fuel");
+            String ayear = intent.getStringExtra("year");
 
-            imageView.setImageResource(pic);
-            title.setText(aTitle);
-            description.setText(aDescription);
+            image.setImageResource(pic);
+            marka.setText(amarka);
+            fiyat.setText(afiyat);
+            gear.setText(agear);
+            fuel.setText(afuel);
+            year.setText(ayear);
 
-            actionBar.setTitle(aTitle);
+            actionBar.setTitle(amarka);
         }
 
         if (position == 3) {
@@ -81,14 +101,20 @@ public class araba2 extends AppCompatActivity {
 
             Bundle bundle = this.getIntent().getExtras();
             int pic = bundle.getInt("image");
-            String aTitle = intent.getStringExtra("title");
-            String aDescription = intent.getStringExtra("description");
+            String amarka = intent.getStringExtra("marka");
+            String afiyat = intent.getStringExtra("fiyat");
+            String agear = intent.getStringExtra("gear");
+            String afuel = intent.getStringExtra("fuel");
+            String ayear = intent.getStringExtra("year");
 
-            imageView.setImageResource(pic);
-            title.setText(aTitle);
-            description.setText(aDescription);
+            image.setImageResource(pic);
+            marka.setText(amarka);
+            fiyat.setText(afiyat);
+            gear.setText(agear);
+            fuel.setText(afuel);
+            year.setText(ayear);
 
-            actionBar.setTitle(aTitle);
+            actionBar.setTitle(amarka);
         }
 
         if (position == 4) {
@@ -96,14 +122,20 @@ public class araba2 extends AppCompatActivity {
 
             Bundle bundle = this.getIntent().getExtras();
             int pic = bundle.getInt("image");
-            String aTitle = intent.getStringExtra("title");
-            String aDescription = intent.getStringExtra("description");
+            String amarka = intent.getStringExtra("marka");
+            String afiyat = intent.getStringExtra("fiyat");
+            String agear = intent.getStringExtra("gear");
+            String afuel = intent.getStringExtra("fuel");
+            String ayear = intent.getStringExtra("year");
 
-            imageView.setImageResource(pic);
-            title.setText(aTitle);
-            description.setText(aDescription);
+            image.setImageResource(pic);
+            marka.setText(amarka);
+            fiyat.setText(afiyat);
+            gear.setText(agear);
+            fuel.setText(afuel);
+            year.setText(ayear);
 
-            actionBar.setTitle(aTitle);
+            actionBar.setTitle(amarka);
         }
 
     }

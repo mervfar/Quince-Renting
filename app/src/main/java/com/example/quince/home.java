@@ -4,6 +4,7 @@ package com.example.quince;
 import android.R.style;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -16,7 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -26,9 +29,9 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class home extends Fragment {
 
-    Spinner spinner;
-    private TextView alis;
-    private TextView iade;
+
+    private EditText alis;
+    private EditText iade;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     @Override
@@ -38,15 +41,24 @@ public class home extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
 
-        Spinner spinner = (Spinner) view.findViewById(R.id.spinner);
+        Button ara = (Button) view.findViewById(R.id.ara);
+        ara.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), araba.class);
+                startActivity(intent);
+            }
+        });
 
+
+        Spinner spinner = (Spinner) view.findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.sehir_array,
                 android.R.layout.simple_spinner_item );
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
 
 
-        alis = (TextView) view.findViewById(R.id.alis);
+        alis = (EditText) view.findViewById(R.id.alis);
         alis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +86,7 @@ public class home extends Fragment {
         };
 
 
-        iade = (TextView) view.findViewById(R.id.iade);
+        iade = (EditText) view.findViewById(R.id.iade);
         iade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

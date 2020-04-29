@@ -9,7 +9,7 @@
     tools:context=".araba2">
 
     <ImageView
-        android:id="@+id/another_imageView"
+        android:id="@+id/image"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_alignParentTop="true"
@@ -18,99 +18,10 @@
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.149" />
-
-    <TextView
-        android:id="@+id/fiyat"
-        android:layout_width="390dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/marka"
-        android:fontFamily="sans-serif-light"
-        android:gravity="center"
-        android:text="0TL"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="26sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.508" />
-
-    <TextView
-        android:id="@+id/year"
-        android:layout_width="390dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/marka"
-        android:fontFamily="sans-serif-light"
-        android:gravity="center"
-        android:text="Year"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="26sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.978" />
-
-    <TextView
-        android:id="@+id/year2"
-        android:layout_width="390dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/marka"
-        android:fontFamily="sans-serif-light"
-        android:gravity="center"
-        android:text="Year"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="26sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.752" />
-
-    <TextView
-        android:id="@+id/fuel"
-        android:layout_width="390dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/marka"
-        android:fontFamily="sans-serif-light"
-        android:gravity="center"
-        android:text="Fuel"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="26sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.67" />
-
-    <TextView
-        android:id="@+id/gear"
-        android:layout_width="390dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/marka"
-        android:fontFamily="sans-serif-light"
-        android:gravity="center"
-        android:text="Gear"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="26sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.587" />
+        app:layout_constraintVertical_bias="0.12" />
 
     <TextView
         android:id="@+id/marka"
@@ -125,13 +36,85 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintHorizontal_bias="0.238"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.425" />
+        app:layout_constraintVertical_bias="0.369" />
+
+    <TextView
+        android:id="@+id/fuel"
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/marka"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="Fuel"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="26sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.639" />
+
+    <TextView
+        android:id="@+id/year"
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/marka"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="Year"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="26sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.724" />
+
+    <TextView
+        android:id="@+id/fiyat"
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/marka"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="0TL"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="26sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.456" />
+
+    <TextView
+        android:id="@+id/gear"
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/marka"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="Gear"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="26sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.545" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/kirala"
         android:layout_width="243dp"
         android:layout_height="53dp"
         android:background="#FFEB3B"
@@ -141,7 +124,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.879" />
+        app:layout_constraintVertical_bias="0.887" />
 
     <!-- i think this looks better for another activity-->
 

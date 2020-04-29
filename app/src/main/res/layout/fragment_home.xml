@@ -64,7 +64,7 @@
             android:backgroundTint="@android:color/darker_gray"
             android:ems="10"
             android:inputType="date"
-            android:text="  09/04/20"
+            android:text="9/04/20"
             android:textColor="@android:color/darker_gray"
             android:textSize="20sp" />
 
@@ -84,13 +84,13 @@
             android:backgroundTint="@android:color/darker_gray"
             android:ems="10"
             android:inputType="date"
-            android:text="  09/04/20"
+            android:text="9/04/20"
             android:textColor="@android:color/darker_gray"
             android:textSize="20sp" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/ara"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFEB3B"
