@@ -75,7 +75,7 @@ public class FirebaseFactory {
     private void setGoogleCredentials() {
         try {
             InputStream serviceAccount = Files
-                    .newInputStream(Paths.get("src/main/java/com/quince/rentingapp/configuration/firebase/quincerentingbucket.json"));
+                    .newInputStream(Paths.get("./quincerentingbucket.json"));
             googleCredentials = GoogleCredentials.fromStream(serviceAccount);
             serviceAccount.close();
         } catch (IOException e) {
