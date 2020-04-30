@@ -1,16 +1,18 @@
 import axios from "axios";
+import { BASE_URL } from "../components/base/Constants";
 
-export function SignIn(loginData) {
+export async function signIn(loginData) {
   let requestOptions = {
     method: "GET",
-    url: `http://mervfar.com:8080/oauth/token?grant_type=password&username=${loginData.username}&password=${loginData.password}`,
+    url: `${BASE_URL}/oauth/token?grant_type=password&username=${loginData.username}&password=${loginData.password}`,
     headers: {
       Authorization: "Basic cXVpbmNlOjEyMzQ=",
     },
   };
-
-  axios(requestOptions)
+  return await axios(requestOptions)
     .then((response) => response.data)
-    .then((result) => console.log(result))
+    .then((result) => {
+      return result;
+    })
     .catch((error) => console.log("error", error));
 }
