@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.quince">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,14 +12,14 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
         <activity android:name=".araba2"
-        android:parentActivityName=".araba"/>
+        android:parentActivityName=".araba" ></activity>
 
-        <activity android:name=".araba"></activity>
+        <activity android:name=".araba" />
         <activity android:name=".anaSayfa" />
         <activity android:name=".giris" />
         <activity android:name=".kayit" />
         <activity android:name=".karsilama" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".baslangic">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

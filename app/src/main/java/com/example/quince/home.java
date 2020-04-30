@@ -30,9 +30,11 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class home extends Fragment {
 
 
-    private EditText alis;
+    private EditText alim;
     private EditText iade;
-    private DatePickerDialog.OnDateSetListener mDateSetListener;
+    private DatePickerDialog.OnDateSetListener iDateSetListener;
+    private DatePickerDialog.OnDateSetListener aDateSetListener;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,8 +60,9 @@ public class home extends Fragment {
         spinner.setAdapter(spinnerAdapter);
 
 
-        alis = (EditText) view.findViewById(R.id.alis);
-        alis.setOnClickListener(new View.OnClickListener() {
+
+        alim = (EditText) view.findViewById(R.id.alim);
+        alim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calendar cal = Calendar.getInstance();
@@ -68,22 +71,23 @@ public class home extends Fragment {
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(getActivity(),
-                android.R.style.Theme_Holo_Light_Dialog_MinWidth , mDateSetListener , year,month,day);
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth , aDateSetListener , year,month,day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
         });
 
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        aDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
                 Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
 
                 String date = month + "/" + day + "/" + year;
-                alis.setText(date);
+                alim.setText(date);
             }
         };
+
 
 
         iade = (EditText) view.findViewById(R.id.iade);
@@ -96,13 +100,13 @@ public class home extends Fragment {
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(getActivity(),
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth , mDateSetListener , year,month,day);
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth , iDateSetListener , year,month,day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
         });
 
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        iDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
