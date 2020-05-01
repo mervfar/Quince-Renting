@@ -10,8 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class giris extends AppCompatActivity {
 
-    Button bntnOfSendRequest;
-    String type = "cce";
+    Button giris;
     String user;
 
 
@@ -21,8 +20,8 @@ public class giris extends AppCompatActivity {
         setContentView(R.layout.activity_giris);
 
 
-        bntnOfSendRequest = (Button) findViewById(R.id.sendRequest);
-        bntnOfSendRequest.setOnClickListener(new View.OnClickListener() {
+        giris = (Button) findViewById(R.id.giris);
+        giris.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -54,24 +53,4 @@ public class giris extends AppCompatActivity {
         });
 
     }
-
-    /*
-    public void sendRequest(String user) {
-        apiService.savePost(user).enqueue(new Callback<Response4Action>() {
-
-            public void onResponse(Call<Response4Action> call, Response4Action response) {
-                if (response.isSuccess()) {
-                    Toast.makeText(giris.this, "Başarılı", Toast.LENGTH_SHORT).show();
-
-                }
-            }
-
-            public void onFailure(Call<Response4Action> call, Throwable throwable) {
-                Toast.makeText(giris.this, "İstek gönderilemedi.", Toast.LENGTH_SHORT).show();
-            }
-
-        });
-    }
-
-    */
 }

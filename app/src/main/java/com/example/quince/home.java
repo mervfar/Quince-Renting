@@ -29,7 +29,6 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class home extends Fragment {
 
-
     private EditText alim;
     private EditText iade;
     private DatePickerDialog.OnDateSetListener iDateSetListener;
@@ -39,7 +38,6 @@ public class home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
 

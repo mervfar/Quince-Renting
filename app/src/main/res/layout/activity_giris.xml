@@ -99,7 +99,7 @@
             app:layout_constraintVertical_bias="0.834">
 
             <Button
-                android:id="@+id/sendRequest"
+                android:id="@+id/giris"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="#FFEB3B"

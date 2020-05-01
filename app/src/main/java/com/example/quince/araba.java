@@ -40,7 +40,7 @@ public class araba extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
-                    Intent intent = new Intent(getApplicationContext(), araba2.class);
+                    Intent intent = new Intent(araba.this, araba2.class);
                     // this intent put our 0 index image to another activity
                     Bundle bundle = new Bundle();
                     bundle.putInt("image", images[0]);
@@ -59,7 +59,7 @@ public class araba extends AppCompatActivity {
 
                 }
                 if (position == 1) {
-                    Intent intent = new Intent(getApplicationContext(), araba2.class);
+                    Intent intent = new Intent(araba.this, araba2.class);
                     // this intent put our 0 index image to another activity
                     Bundle bundle = new Bundle();
                     bundle.putInt("image", images[1]);
@@ -75,7 +75,7 @@ public class araba extends AppCompatActivity {
                     startActivity(intent);
                 }
                 if (position == 2) {
-                    Intent intent = new Intent(getApplicationContext(), araba2.class);
+                    Intent intent = new Intent(araba.this, araba2.class);
                     // this intent put our 0 index image to another activity
                     Bundle bundle = new Bundle();
                     bundle.putInt("image", images[2]);
@@ -91,7 +91,7 @@ public class araba extends AppCompatActivity {
                     startActivity(intent);
                 }
                 if (position == 3) {
-                    Intent intent = new Intent(getApplicationContext(), araba2.class);
+                    Intent intent = new Intent(araba.this, araba2.class);
                     // this intent put our 0 index image to another activity
                     Bundle bundle = new Bundle();
                     bundle.putInt("image", images[3]);
@@ -107,12 +107,12 @@ public class araba extends AppCompatActivity {
                     startActivity(intent);
                 }
                 if (position == 4) {
-                    Intent intent = new Intent(getApplicationContext(), araba2.class);
-                    // this intent put our 0 index image to another activity
+                    Intent intent = new Intent(araba.this, araba2.class);
+
                     Bundle bundle = new Bundle();
                     bundle.putInt("image", images[4]);
                     intent.putExtras(bundle);
-                    // now put title and description to another activity
+
                     intent.putExtra("marka", mMarka[4]);
                     intent.putExtra("fiyat", mFiyat[4]);
                     intent.putExtra("gear", mGear[4]);

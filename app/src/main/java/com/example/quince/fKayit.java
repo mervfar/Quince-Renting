@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +21,7 @@ import androidx.fragment.app.Fragment;
 public class fKayit extends Fragment {
 
 
-    TextView tamamlandi;
+    Button tamamlandi;
 
     @Nullable
     @Override
@@ -29,14 +30,17 @@ public class fKayit extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_kisibilgileri, container, false);
 
-        tamamlandi = (TextView) view.findViewById(R.id.tamanlandi);
+        tamamlandi = (Button) view.findViewById(R.id.tamamlandi);
         tamamlandi.setOnClickListener(new View.OnClickListener() {
-
 
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity().getApplicationContext(), "Kişi bilgileriniz kaydedildi. Lütfen ehliyet bilgilerine geçiniz.", Toast.LENGTH_SHORT).show();
-                new kisikayit().execute(); // kisikayit için api class oluşturuldu.
+
+                RestInterface api = new RestInterface();
+                api.GetToken("/oauth/token?username=mervfar&password=12345&grant_type=password" ,getActivity());
+                api.execute();
+
             }
         });
 
