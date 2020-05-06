@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home"
+    tools:context=".Pages.home"
     android:background="@drawable/bayaz">
 
     <ImageView
@@ -45,7 +45,7 @@
             android:layout_height="60dp"
             android:backgroundTint="@android:color/darker_gray"
             android:dropDownSelector="@android:color/darker_gray"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="#AAAAAA"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
 
         <TextView
@@ -63,9 +63,10 @@
             android:layout_height="60dp"
             android:backgroundTint="@android:color/darker_gray"
             android:ems="10"
+            android:hint="9/04/20"
             android:inputType="date"
-            android:text="9/04/20"
             android:textColor="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
             android:textSize="20sp" />
 
         <TextView
@@ -83,9 +84,10 @@
             android:layout_height="60dp"
             android:backgroundTint="@android:color/darker_gray"
             android:ems="10"
+            android:hint="9/04/20"
             android:inputType="date"
-            android:text="9/04/20"
             android:textColor="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
             android:textSize="20sp" />
     </LinearLayout>
 

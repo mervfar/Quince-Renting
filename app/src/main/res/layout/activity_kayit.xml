@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bayaz"
     android:orientation="vertical"
-    tools:context=".kayit">
+    tools:context=".Pages.kayit">
 
     <LinearLayout
         android:layout_width="407dp"
@@ -93,14 +93,15 @@
             app:layout_constraintVertical_bias="0.197">
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="75sp"
                 android:drawableLeft="@drawable/ic_person_black_24dp"
                 android:ems="10"
+                android:hint="  Kullanıcı Adınız"
                 android:inputType="textPersonName"
-                android:text="  Adınız"
                 android:textColor="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray"
                 android:textSize="20sp" />
 
             <EditText
@@ -109,9 +110,10 @@
                 android:layout_height="75sp"
                 android:drawableLeft="@drawable/ic_mail_black_24dp"
                 android:ems="10"
+                android:hint="  E -mail adresiniz"
                 android:inputType="textEmailAddress"
-                android:text="  E -mail adresiniz"
                 android:textColor="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray"
                 android:textSize="20sp" />
 
             <EditText
@@ -120,9 +122,10 @@
                 android:layout_height="75sp"
                 android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
                 android:ems="10"
+                android:hint="  Şifreniz"
                 android:inputType="textPersonName"
-                android:text="  Şifreniz"
                 android:textColor="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray"
                 android:textSize="20sp" />
 
             <EditText
@@ -130,9 +133,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="75sp"
                 android:ems="10"
+                android:hint="       Şifrenizi doğrulayın"
                 android:inputType="textPersonName"
-                android:text="       Şifrenizi doğrulayın"
                 android:textColor="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -162,6 +166,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.656" />
+
+        <Button
+            android:id="@+id/tamamlandi"
+            android:layout_width="137dp"
+            android:layout_height="37dp"
+            android:background="@color/colorWhite"
+            android:drawableLeft="@drawable/ic_check_circle_black_24dp"
+            android:onClick="butonClicked"
+            android:text="Tamamlandı"
+            android:textColor="@android:color/background_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.886"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.847"
+            tools:ignore="OnClick" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

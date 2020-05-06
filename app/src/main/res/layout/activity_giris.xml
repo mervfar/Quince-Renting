@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bayaz"
-    tools:context=".giris" >
+    tools:context=".Pages.giris" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contain"
@@ -44,9 +44,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:ems="10"
+                android:hint="E-mail adresiniz..."
                 android:inputType="textEmailAddress"
-                android:text="E-mail adresiniz..."
                 android:textColor="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray"
                 android:textSize="20sp" />
 
             <EditText
@@ -54,9 +55,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:ems="10"
+                android:hint="Şifreniz..."
                 android:inputType="textVisiblePassword"
-                android:text="Şifreniz..."
                 android:textColor="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray"
                 android:textSize="20sp" />
 
         </LinearLayout>

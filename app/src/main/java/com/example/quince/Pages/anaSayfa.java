@@ -1,4 +1,4 @@
-package com.example.quince;
+package com.example.quince.Pages;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
+import com.example.quince.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class anaSayfa extends AppCompatActivity {

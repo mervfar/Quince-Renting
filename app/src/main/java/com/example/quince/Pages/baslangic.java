@@ -1,9 +1,11 @@
-package com.example.quince;
+package com.example.quince.Pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.quince.R;
 
 public class baslangic extends AppCompatActivity {
 

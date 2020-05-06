@@ -1,4 +1,4 @@
-package com.example.quince;
+package com.example.quince.Pages;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.quince.R;
 
 public class araba2 extends AppCompatActivity {
 

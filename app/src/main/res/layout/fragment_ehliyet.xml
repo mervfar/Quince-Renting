@@ -20,14 +20,15 @@
         app:layout_constraintVertical_bias="0.972">
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/dogum"
             android:layout_width="350dp"
             android:layout_height="75dp"
             android:drawableLeft="@drawable/ic_date_range_black_24dp"
             android:ems="10"
+            android:hint="  Doğum Tarihi"
             android:inputType="textPersonName"
-            android:text="  Doğum Tarihi"
             android:textColor="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.114"
@@ -36,17 +37,18 @@
             app:layout_constraintVertical_bias="0.231" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/ad"
             style="@android:style/Widget.DeviceDefault.AutoCompleteTextView"
             android:layout_width="350dp"
             android:layout_height="75dp"
             android:drawableLeft="@drawable/ic_person_black_24dp"
             android:ems="10"
+            android:hint=" Kullanıcı Adınız"
             android:inputType="textPersonName"
             android:singleLine="false"
-            android:text=" Adınız"
             android:textAlignment="gravity"
             android:textColor="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,14 +59,15 @@
             tools:visibility="visible" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/gecerlilik"
             android:layout_width="350dp"
             android:layout_height="75dp"
             android:drawableLeft="@drawable/ic_access_time_black_24dp"
             android:ems="10"
+            android:hint="  Geçerlilik Süresi"
             android:inputType="textPersonName"
-            android:text="  Geçerlilik Süresi"
             android:textColor="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.114"
@@ -73,13 +76,14 @@
             app:layout_constraintVertical_bias="0.349" />
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/seri"
             android:layout_width="350dp"
             android:layout_height="75dp"
             android:ems="10"
+            android:hint="       Seri No"
             android:inputType="textPersonName"
-            android:text="       Seri No"
             android:textColor="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.114"
@@ -88,13 +92,14 @@
             app:layout_constraintVertical_bias="0.466" />
 
         <EditText
-            android:id="@+id/editText10"
+            android:id="@+id/kimlik"
             android:layout_width="350dp"
             android:layout_height="75dp"
             android:ems="10"
+            android:hint="       Kimlik No"
             android:inputType="textPersonName"
-            android:text="       Kimlik No"
             android:textColor="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.114"
@@ -113,7 +118,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.454"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/editText3"
+            app:layout_constraintTop_toTopOf="@+id/ad"
             app:layout_constraintVertical_bias="0.771" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

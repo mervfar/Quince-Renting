@@ -1,4 +1,4 @@
-package com.example.quince;
+package com.example.quince.Pages;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.quince.R;
 
 
 public class araba extends AppCompatActivity {

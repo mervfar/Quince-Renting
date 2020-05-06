@@ -12,15 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
-        <activity android:name=".araba2"
-        android:parentActivityName=".araba" ></activity>
+        <activity android:name=".Pages.araba2"
+        android:parentActivityName=".Pages.araba" ></activity>
 
-        <activity android:name=".araba" />
-        <activity android:name=".anaSayfa" />
-        <activity android:name=".giris" />
-        <activity android:name=".kayit" />
-        <activity android:name=".karsilama" />
-        <activity android:name=".baslangic">
+        <activity android:name=".Pages.araba" />
+        <activity android:name=".Pages.anaSayfa" />
+        <activity android:name=".Pages.giris" />
+        <activity android:name=".Pages.kayit" />
+        <activity android:name=".Pages.karsilama" />
+        <activity android:name=".Pages.baslangic">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
