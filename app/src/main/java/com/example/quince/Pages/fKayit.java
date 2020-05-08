@@ -31,8 +31,7 @@ import retrofit2.Response;
 
 public class fKayit extends Fragment {
 
-
-    Button tamamlandi;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Nullable
     @Override
@@ -48,33 +47,39 @@ public class fKayit extends Fragment {
         final EditText email=(EditText)view.findViewById(R.id.mail);
 
 
-        final Button registerAction =(Button)view.findViewById(R.id.tamamlandi);
+        final Button tamamlandi =(Button)view.findViewById(R.id.tamamlandi);
         final StorageService storageService =new StorageService();
 
-        registerAction.setOnClickListener(new View.OnClickListener() {
+        tamamlandi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (confPassword.getText().toString().equals(password.getText().toString())){
-                    final UserAddDTO newUser=new UserAddDTO();
-                    newUser.setEmail(email.getText().toString());
-                    newUser.setUsername(username.getText().toString());
-                    newUser.setPassword(password.getText().toString());
-                    Call<UserRegisterRespose> registerCall=apiService.register(newUser);
-                    registerCall.enqueue(new Callback<UserRegisterRespose>() {
-                        @Override
-                        public void onResponse(Call<UserRegisterRespose> call, Response<UserRegisterRespose> response) {
-                            Toast.makeText(getActivity().getApplicationContext(), response.body().getInfo(), Toast.LENGTH_SHORT).show();
-                            if (response.body().getInfo().equals("Kişi bilgileriniz kaydedildi. Lütfen ehliyet bilgilerine geçiniz.")){
-                                storageService.storeCreds(newUser.getUsername(),newUser.getPassword(),getActivity().getApplicationContext());
+                if (email.getText().toString().trim().matches(emailPattern)) {
+
+                    if (confPassword.getText().toString().equals(password.getText().toString())) {
+                        final UserAddDTO newUser = new UserAddDTO();
+                        newUser.setEmail(email.getText().toString());
+                        newUser.setUsername(username.getText().toString());
+                        newUser.setPassword(password.getText().toString());
+                        Call<UserRegisterRespose> registerCall = apiService.register(newUser);
+                        registerCall.enqueue(new Callback<UserRegisterRespose>() {
+                            @Override
+                            public void onResponse(Call<UserRegisterRespose> call, Response<UserRegisterRespose> response) {
+                                Toast.makeText(getActivity(), response.body().getInfo(), Toast.LENGTH_SHORT).show();
+                                if (response.body().getInfo().equals("User has been created!")) {
+                                    storageService.storeCreds(newUser.getUsername(), newUser.getPassword(), getActivity());
+                                }
                             }
-                        }
 
-                        @Override
-                        public void onFailure(Call<UserRegisterRespose> call, Throwable t) {
-                            Toast.makeText(getActivity().getApplicationContext(), ",Sunucu ile iletişimde hata meydana geldi", Toast.LENGTH_SHORT).show();
+                            @Override
+                            public void onFailure(Call<UserRegisterRespose> call, Throwable t) {
+                                Toast.makeText(getActivity(), "Sunucu ile iletişimde hata meydana geldi", Toast.LENGTH_SHORT).show();
 
-                        }
-                    });
+                            }
+                        });
+                    }
+                }
+                else {
+                    Toast.makeText(getActivity(), "Invalid email address", Toast.LENGTH_SHORT).show();
                 }
             }
         });

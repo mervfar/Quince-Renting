@@ -108,17 +108,21 @@
             app:layout_constraintVertical_bias="0.586" />
 
         <Button
-            android:id="@+id/kayit"
-            android:layout_width="178dp"
-            android:layout_height="52dp"
-            android:background="#FFEB3B"
-            android:text="Kayıt Ol"
+            android:id="@+id/tamamlandi"
+            android:layout_width="137dp"
+            android:layout_height="37dp"
+            android:background="@color/colorWhite"
+            android:drawableLeft="@drawable/ic_check_circle_black_24dp"
+            android:onClick="butonClicked"
+            android:text="Tamamlandı"
             android:textColor="@android:color/background_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintHorizontal_bias="0.886"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/ad"
-            app:layout_constraintVertical_bias="0.771" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.847"
+            tools:ignore="OnClick" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

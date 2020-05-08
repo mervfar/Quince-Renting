@@ -160,6 +160,7 @@
             android:layout_width="64dp"
             android:layout_height="65dp"
             android:textColor="@android:color/background_dark"
+            android:textColorHint="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.046"

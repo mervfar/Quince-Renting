@@ -77,9 +77,9 @@ public class home extends Fragment {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
-                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+                Log.d(TAG, "onDateSet: yyy/mm/dd: " + year + "/" + month + "/" + day);
 
-                String date = month + "/" + day + "/" + year;
+                String date = year + "/" + month + "/" + day;
                 alim.setText(date);
             }
         };
@@ -106,13 +106,12 @@ public class home extends Fragment {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
-                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+                Log.d(TAG, "onDateSet: yyy/mm/dd " + year + "/" + month + "/" + day);
 
-                String date = month + "/" + day + "/" + year;
+                String date = year + "/" + month + "/" + day;
                 iade.setText(date);
             }
         };
-
 
      return view;
 

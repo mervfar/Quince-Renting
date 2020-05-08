@@ -8,6 +8,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ import com.example.quince.Service.StorageService;
 
 public class kayit extends AppCompatActivity {
 
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,25 +40,29 @@ public class kayit extends AppCompatActivity {
         final EditText email=(EditText)findViewById(R.id.mail);
 
 
-        final Button registerAction =(Button)findViewById(R.id.tamamlandi);
+        final Button tamamlandi =(Button)findViewById(R.id.tamamlandi);
         final StorageService storageService =new StorageService();
         final ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 
-        registerAction.setOnClickListener(new View.OnClickListener() {
+        tamamlandi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (confPassword.getText().toString().equals(password.getText().toString())){
-                    final UserAddDTO newUser=new UserAddDTO();
+
+             if (email.getText().toString().trim().matches(emailPattern)) {
+
+                if (confPassword.getText().toString().equals(password.getText().toString())) {
+                    final UserAddDTO newUser = new UserAddDTO();
                     newUser.setEmail(email.getText().toString());
                     newUser.setUsername(username.getText().toString());
                     newUser.setPassword(password.getText().toString());
-                    Call<UserRegisterRespose> registerCall=apiService.register(newUser);
+
+                    Call<UserRegisterRespose> registerCall = apiService.register(newUser);
                     registerCall.enqueue(new Callback<UserRegisterRespose>() {
                         @Override
                         public void onResponse(Call<UserRegisterRespose> call, Response<UserRegisterRespose> response) {
                             Toast.makeText(getApplicationContext(), response.body().getInfo(), Toast.LENGTH_SHORT).show();
-                            if (response.body().getInfo().equals("Kişi bilgileriniz kaydedildi. Lütfen ehliyet bilgilerine geçiniz.")){
-                                storageService.storeCreds(newUser.getUsername(),newUser.getPassword(),getApplicationContext());
+                            if (response.body().getInfo().equals("User has been created!")) {
+                                storageService.storeCreds(newUser.getUsername(), newUser.getPassword(), getApplicationContext());
                             }
                         }
 
@@ -68,7 +74,12 @@ public class kayit extends AppCompatActivity {
                     });
                 }
             }
+             else {
+                 Toast.makeText(getApplicationContext(), "Invalid email address", Toast.LENGTH_SHORT).show();
+             }
+            }
         });
+
 
 
         kisi.setOnClickListener(new View.OnClickListener() {

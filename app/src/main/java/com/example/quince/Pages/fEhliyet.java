@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 public class fEhliyet extends Fragment {
 
 
-    Button kayit;
+    Button tamamlandi;
 
     @Nullable
     @Override
@@ -27,8 +27,8 @@ public class fEhliyet extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ehliyet, container, false);
 
 
-        kayit = (Button) view.findViewById(R.id.kayit);
-        kayit.setOnClickListener(new View.OnClickListener() {
+        tamamlandi = (Button) view.findViewById(R.id.tamamlandi);
+        tamamlandi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), giris.class);
@@ -38,4 +38,4 @@ public class fEhliyet extends Fragment {
 
         return view;
     }
-    }
+}
