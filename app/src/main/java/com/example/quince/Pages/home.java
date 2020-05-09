@@ -2,6 +2,7 @@ package com.example.quince.Pages;
 
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -18,6 +19,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 
 import com.example.quince.R;
 
@@ -29,6 +31,9 @@ public class home extends Fragment {
 
     private EditText alim;
     private EditText iade;
+    private EditText time;
+    private Button alis_saati;
+    private Button iade_saati;
     private DatePickerDialog.OnDateSetListener iDateSetListener;
     private DatePickerDialog.OnDateSetListener aDateSetListener;
 
@@ -60,58 +65,82 @@ public class home extends Fragment {
         alim = (EditText) view.findViewById(R.id.alim);
         alim.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
+            public void onClick(View v) {
 
-                DatePickerDialog dialog = new DatePickerDialog(getActivity(),
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth , aDateSetListener , year,month,day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
+                final Calendar takvim = Calendar.getInstance();
+                int yil = takvim.get(Calendar.YEAR);
+                int ay = takvim.get(Calendar.MONTH);
+                int gun = takvim.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dpd = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                month += 1;
+                                alim.setText(year + "/" + month + "/" + dayOfMonth);
+                            }
+                        }, yil, ay, gun);
+                dpd.setButton(DatePickerDialog.BUTTON_POSITIVE, "Seç", dpd);
+                dpd.setButton(DatePickerDialog.BUTTON_NEGATIVE, "İptal", dpd);
+                dpd.show();
+
             }
         });
 
-        aDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month + 1;
-                Log.d(TAG, "onDateSet: yyy/mm/dd: " + year + "/" + month + "/" + day);
+        time = (EditText) view.findViewById(R.id.time);
+        alis_saati = (Button)view.findViewById(R.id.a_saat);
+        alis_saati.setOnClickListener(new View.OnClickListener() {
 
-                String date = year + "/" + month + "/" + day;
-                alim.setText(date);
+            @Override
+            public void onClick(View v) {
+
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        time.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
             }
-        };
+        });
+
+
+
+
 
 
 
         iade = (EditText) view.findViewById(R.id.iade);
         iade.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
+            public void onClick(View v) {
 
-                DatePickerDialog dialog = new DatePickerDialog(getActivity(),
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth , iDateSetListener , year,month,day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
+                final Calendar takvim = Calendar.getInstance();
+                int yil = takvim.get(Calendar.YEAR);
+                int ay = takvim.get(Calendar.MONTH);
+                int gun = takvim.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dpd = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                month += 1;
+                                iade.setText(year + "/" + month + "/" + dayOfMonth);
+                            }
+                        }, yil, ay, gun);
+                dpd.setButton(DatePickerDialog.BUTTON_POSITIVE, "Seç", dpd);
+                dpd.setButton(DatePickerDialog.BUTTON_NEGATIVE, "İptal", dpd);
+                dpd.show();
+
             }
         });
-
-        iDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month + 1;
-                Log.d(TAG, "onDateSet: yyy/mm/dd " + year + "/" + month + "/" + day);
-
-                String date = year + "/" + month + "/" + day;
-                iade.setText(date);
-            }
-        };
 
      return view;
 

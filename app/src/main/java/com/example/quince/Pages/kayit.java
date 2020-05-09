@@ -23,22 +23,24 @@ import com.example.quince.Service.StorageService;
 
 public class kayit extends AppCompatActivity {
 
-    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    final String emailPattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kayit);
 
-        Button kisi = findViewById(R.id.kisi);
-        Button ehliyet= findViewById(R.id.ehliyet);
+        final Button kisi = findViewById(R.id.kisi);
+        final Button ehliyet= findViewById(R.id.ehliyet);
 
 
         final EditText username=(EditText)findViewById(R.id.username);
         final EditText password=(EditText)findViewById(R.id.password);
         final EditText confPassword=(EditText)findViewById(R.id.confPassword);
         final EditText email=(EditText)findViewById(R.id.mail);
-
+        final EditText name=(EditText)findViewById(R.id.name);
+        final EditText surname=(EditText)findViewById(R.id.surname);
+        final EditText telefon=(EditText)findViewById(R.id.telefon);
 
         final Button tamamlandi =(Button)findViewById(R.id.tamamlandi);
         final StorageService storageService =new StorageService();
@@ -55,6 +57,9 @@ public class kayit extends AppCompatActivity {
                     newUser.setEmail(email.getText().toString());
                     newUser.setUsername(username.getText().toString());
                     newUser.setPassword(password.getText().toString());
+                    newUser.setName(name.getText().toString());
+                    newUser.setSurname(surname.getText().toString());
+                    newUser.setPhoneNumber(telefon.getText().toString());
 
                     Call<UserRegisterRespose> registerCall = apiService.register(newUser);
                     registerCall.enqueue(new Callback<UserRegisterRespose>() {

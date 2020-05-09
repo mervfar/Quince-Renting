@@ -31,7 +31,7 @@ import retrofit2.Response;
 
 public class fKayit extends Fragment {
 
-    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    final String emailPattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
 
     @Nullable
     @Override
@@ -45,6 +45,9 @@ public class fKayit extends Fragment {
         final EditText password=(EditText)view.findViewById(R.id.password);
         final EditText confPassword=(EditText)view.findViewById(R.id.confPassword);
         final EditText email=(EditText)view.findViewById(R.id.mail);
+        final EditText name=(EditText)view.findViewById(R.id.name);
+        final EditText surname=(EditText)view.findViewById(R.id.surname);
+        final EditText telefon=(EditText)view.findViewById(R.id.telefon);
 
 
         final Button tamamlandi =(Button)view.findViewById(R.id.tamamlandi);
@@ -60,6 +63,10 @@ public class fKayit extends Fragment {
                         newUser.setEmail(email.getText().toString());
                         newUser.setUsername(username.getText().toString());
                         newUser.setPassword(password.getText().toString());
+                        newUser.setName(name.getText().toString());
+                        newUser.setSurname(surname.getText().toString());
+                        newUser.setPhoneNumber(telefon.getText().toString());
+
                         Call<UserRegisterRespose> registerCall = apiService.register(newUser);
                         registerCall.enqueue(new Callback<UserRegisterRespose>() {
                             @Override

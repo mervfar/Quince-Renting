@@ -21,6 +21,9 @@ import retrofit2.Response;
 
 
 public class giris extends AppCompatActivity {
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +61,7 @@ public class giris extends AppCompatActivity {
         });
 
 
-        Button kayit = (Button) findViewById(R.id.kayit);
+        final Button kayit = (Button) findViewById(R.id.kayit);
         kayit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +69,7 @@ public class giris extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Button uye_olma = (Button) findViewById(R.id.uye_olma);
+        final Button uye_olma = (Button) findViewById(R.id.uye_olma);
         uye_olma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
