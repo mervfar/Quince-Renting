@@ -27,7 +27,7 @@ public class fEhliyet extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ehliyet, container, false);
 
 
-        tamamlandi = (Button) view.findViewById(R.id.tamamlandi);
+        tamamlandi = (Button) view.findViewById(R.id.tamamlandi3);
         tamamlandi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

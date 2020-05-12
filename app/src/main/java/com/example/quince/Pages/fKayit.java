@@ -1,14 +1,11 @@
 package com.example.quince.Pages;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quince.Configuration.RestService.ApiClient;
@@ -17,10 +14,6 @@ import com.example.quince.Domains.Response.UserRegisterRespose;
 import com.example.quince.Domains.User.UserAddDTO;
 import com.example.quince.R;
 import com.example.quince.Service.StorageService;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,7 +43,7 @@ public class fKayit extends Fragment {
         final EditText telefon=(EditText)view.findViewById(R.id.telefon);
 
 
-        final Button tamamlandi =(Button)view.findViewById(R.id.tamamlandi);
+        final Button tamamlandi =(Button)view.findViewById(R.id.tamamlandi2);
         final StorageService storageService =new StorageService();
 
         tamamlandi.setOnClickListener(new View.OnClickListener() {

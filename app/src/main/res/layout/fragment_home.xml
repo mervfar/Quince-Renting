@@ -21,15 +21,14 @@
 
 
     <LinearLayout
-        android:layout_width="381dp"
-        android:layout_height="443dp"
+        android:layout_width="386dp"
+        android:layout_height="453dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView5"
@@ -43,10 +42,11 @@
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:backgroundTint="@android:color/darker_gray"
             android:dropDownSelector="@android:color/darker_gray"
             android:textColor="#AAAAAA"
+            android:textSize="20sp"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
 
         <TextView
@@ -61,7 +61,7 @@
         <EditText
             android:id="@+id/alim"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:backgroundTint="@android:color/darker_gray"
             android:ems="10"
             android:hint="20/04/09"
@@ -70,24 +70,26 @@
             android:textColorHint="@android:color/darker_gray"
             android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/a_saat"
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/background_light"
-            android:text="alış saati"
-            android:textColor="@android:color/background_dark" />
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:drawableLeft="@drawable/ic_access_time_black_24dp"
+            android:text="  Alış Saati"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/time"
+            android:id="@+id/alis_time"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:backgroundTint="@android:color/darker_gray"
             android:ems="10"
             android:hint="00:00"
             android:inputType="time"
             android:textColor="@android:color/darker_gray"
-            android:textColorHint="@android:color/darker_gray" />
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView6"
@@ -101,7 +103,7 @@
         <EditText
             android:id="@+id/iade"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:backgroundTint="@android:color/darker_gray"
             android:ems="10"
             android:hint="20/04/09"
@@ -110,13 +112,26 @@
             android:textColorHint="@android:color/darker_gray"
             android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/i_saat"
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/background_light"
-            android:text="iade saati"
-            android:textColor="@android:color/background_dark" />
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:drawableLeft="@drawable/ic_access_time_black_24dp"
+            android:text="  İade Saati"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/iade_time"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:ems="10"
+            android:hint="00:00"
+            android:inputType="time"
+            android:textColor="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -129,9 +144,9 @@
         android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891" />
+        app:layout_constraintVertical_bias="0.896" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
