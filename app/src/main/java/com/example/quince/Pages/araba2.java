@@ -2,144 +2,62 @@ package com.example.quince.Pages;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ShareCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.util.Linkify;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.quince.Domains.Car.CarBrand;
 import com.example.quince.R;
 
 public class araba2 extends AppCompatActivity {
 
     ImageView image;
-    TextView marka, fiyat, gear , fuel ,year;
-    int position;
+    TextView marka;
+    TextView fiyat;
+    TextView gear;
+    TextView fuel;
+    TextView year;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_araba2);
 
-        ActionBar actionBar = getSupportActionBar();
 
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowHomeEnabled(true);
-        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        image = findViewById(R.id.image);
-        marka = findViewById(R.id.marka);
-        fiyat = findViewById(R.id.fiyat);
-        gear  = findViewById(R.id.gear);
-        fuel  = findViewById(R.id.fuel);
-        year  = findViewById(R.id.year);
+        image = (ImageView) findViewById(R.id.image);
+        marka = (TextView) findViewById(R.id.marka);
+        fiyat = (TextView) findViewById(R.id.fiyat);
+        gear = (TextView) findViewById(R.id.gear);
+        fuel = (TextView) findViewById(R.id.fuel);
+        year = (TextView) findViewById(R.id.year);
 
-        if (position == 0) {
-            Intent intent = getIntent();
+        String marka = getIntent().getExtras().getString("marka");
+        String fiyat = getIntent().getExtras().getString("fiyat");
+        String gear = getIntent().getExtras().getString("gear");
+        String fuel = getIntent().getExtras().getString("fuel");
+        String year = getIntent().getExtras().getString("year");
 
-            Bundle bundle = this.getIntent().getExtras();
-            int pic = bundle.getInt("image");
-            String amarka = intent.getStringExtra("marka");
-            String afiyat = intent.getStringExtra("fiyat");
-            String agear = intent.getStringExtra("gear");
-            String afuel = intent.getStringExtra("fuel");
-            String ayear = intent.getStringExtra("year");
 
-            image.setImageResource(pic);
-            marka.setText(amarka);
-            fiyat.setText(afiyat);
-            gear.setText(agear);
-            fuel.setText(afuel);
-            year.setText(ayear);
+    }
 
-            actionBar.setTitle(amarka);
-        }
-
-        if (position == 1) {
-            Intent intent = getIntent();
-
-            Bundle bundle = this.getIntent().getExtras();
-            int pic = bundle.getInt("image");
-            String amarka = intent.getStringExtra("marka");
-            String afiyat = intent.getStringExtra("fiyat");
-            String agear = intent.getStringExtra("gear");
-            String afuel = intent.getStringExtra("fuel");
-            String ayear = intent.getStringExtra("year");
-
-            image.setImageResource(pic);
-            marka.setText(amarka);
-            fiyat.setText(afiyat);
-            gear.setText(agear);
-            fuel.setText(afuel);
-            year.setText(ayear);
-
-            actionBar.setTitle(amarka);
-        }
-
-        if (position == 2) {
-            Intent intent = getIntent();
-
-            Bundle bundle = this.getIntent().getExtras();
-            int pic = bundle.getInt("image");
-            String amarka = intent.getStringExtra("marka");
-            String afiyat = intent.getStringExtra("fiyat");
-            String agear = intent.getStringExtra("gear");
-            String afuel = intent.getStringExtra("fuel");
-            String ayear = intent.getStringExtra("year");
-
-            image.setImageResource(pic);
-            marka.setText(amarka);
-            fiyat.setText(afiyat);
-            gear.setText(agear);
-            fuel.setText(afuel);
-            year.setText(ayear);
-
-            actionBar.setTitle(amarka);
-        }
-
-        if (position == 3) {
-            Intent intent = getIntent();
-
-            Bundle bundle = this.getIntent().getExtras();
-            int pic = bundle.getInt("image");
-            String amarka = intent.getStringExtra("marka");
-            String afiyat = intent.getStringExtra("fiyat");
-            String agear = intent.getStringExtra("gear");
-            String afuel = intent.getStringExtra("fuel");
-            String ayear = intent.getStringExtra("year");
-
-            image.setImageResource(pic);
-            marka.setText(amarka);
-            fiyat.setText(afiyat);
-            gear.setText(agear);
-            fuel.setText(afuel);
-            year.setText(ayear);
-
-            actionBar.setTitle(amarka);
-        }
-
-        if (position == 4) {
-            Intent intent = getIntent();
-
-            Bundle bundle = this.getIntent().getExtras();
-            int pic = bundle.getInt("image");
-            String amarka = intent.getStringExtra("marka");
-            String afiyat = intent.getStringExtra("fiyat");
-            String agear = intent.getStringExtra("gear");
-            String afuel = intent.getStringExtra("fuel");
-            String ayear = intent.getStringExtra("year");
-
-            image.setImageResource(pic);
-            marka.setText(amarka);
-            fiyat.setText(afiyat);
-            gear.setText(agear);
-            fuel.setText(afuel);
-            year.setText(ayear);
-
-            actionBar.setTitle(amarka);
-        }
-
+    private Intent createShareForcastIntent(){
+        String username = getIntent().getExtras().getString("login");
+        String link = getIntent().getExtras().getString("link");
+        Intent shareIntent = ShareCompat.IntentBuilder.from(this)
+                .setType("text/plain")
+                .setText("Check out this awesome developer @" + username + ", " + link)
+                .getIntent();
+        return shareIntent;
     }
 
 }
