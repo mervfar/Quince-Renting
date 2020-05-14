@@ -36,7 +36,9 @@ public class DeploymentListener {
         return new JSONObject(content);
     }
     private void runPipeLine() throws IOException {
-        String[] cmd = { "sh", "/root/deneme.sh"};
-        Runtime.getRuntime().exec(cmd);
+        ProcessBuilder builder = new ProcessBuilder();
+        builder.command("sh", "-c", "./deneme.sh");
+        Process process = builder.start();
+        System.out.println(process);
     }
 }
