@@ -22,11 +22,12 @@ import java.util.concurrent.Executors;
 public class DeploymentListener {
 
     @PostMapping
-    public void tryDeployNewBuild(@RequestParam(name="secret") String deploymentToken) throws IOException, JSONException {
+    public String  tryDeployNewBuild(@RequestParam(name="secret") String deploymentToken) throws IOException, JSONException {
         System.out.println("TOKENİMİZ>>>"+deploymentToken);
         if (checkToken(deploymentToken)){
             runPipeLine();
         }
+        return "{\"result\":True,\"info\":\"Deployment scheduled! We will be back in 3 minutes!\"}";
     }
     private boolean checkToken(String hash) throws IOException, JSONException {
             String filename = "./deploymentSecret.json";
