@@ -31,12 +31,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id).
         orElseThrow(() -> new ResourceAccessException("User with " + id + " not found"));
     }
-    public User findByTCNo(long tcno){
-        return userRepository.findByTCno(tcno);
-    }
-    public List<User> findByBirthDate(double year){
-        return userRepository.findByBirthDate(year);
-    }
+
     public Boolean existsByEmail(String email){
         return userRepository.existsByEmail(email);
     }

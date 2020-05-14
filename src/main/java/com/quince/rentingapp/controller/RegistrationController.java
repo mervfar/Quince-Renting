@@ -42,7 +42,7 @@ public class RegistrationController {
         }
         User newUser= Utils.mapper(addDTO,User.class);
         newUser.setUserRole(Role.MEMBER);
-        if(!file.isEmpty()){
+        if(file!=null){
             newUser.setImageUrl(uploadService.uploadFile(file,newUser.getUsername()));
         }
         final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();

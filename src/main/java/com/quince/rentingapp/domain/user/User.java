@@ -24,10 +24,12 @@ public class User extends BaseEntity implements UserDetails, Serializable {
 
 
     private String username;
+    private String name;
+    private String surname;
     private String password;
     private String email;
     private String imageUrl;
-
+    private String phoneNumber;
     @JsonBackReference
     @Transient
     private MultipartFile imageFile;
