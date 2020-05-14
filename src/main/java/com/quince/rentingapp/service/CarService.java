@@ -23,19 +23,19 @@ public class CarService {
     public List<Car> findAll(){
         return carRepository.findAll();
     }
-    public List<Car> findByBrand(CarBrand carBrand){
+    public List<Car> findByBrand(String carBrand){
         return carRepository.findByBrand(carBrand);
     }
     public List<Car> findByYear(double year){
         return carRepository.findByYear(year);
     }
-    public List<Car> findByBody(CarBody body){
+    public List<Car> findByBody(String body){
         return carRepository.findByCarBody(body);
     }
-    public List<Car> findByTransmission(CarTransmissionType gear){
+    public List<Car> findByTransmission(String gear){
         return carRepository.findByGear(gear);
     }
-    public List<Car> findByFuel(CarFuelType fuel){
+    public List<Car> findByFuel(String fuel){
         return carRepository.findByFuel(fuel);
     }
     public List<Car> findAvailableCars(boolean isActive){

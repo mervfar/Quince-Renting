@@ -1,7 +1,5 @@
 package com.quince.rentingapp.controller;
 
-import com.quince.rentingapp.domain.car.CarBrand;
-import com.quince.rentingapp.domain.user.User;
 import com.quince.rentingapp.service.CurrentUserService;
 import com.quince.rentingapp.service.UploadService;
 import lombok.RequiredArgsConstructor;

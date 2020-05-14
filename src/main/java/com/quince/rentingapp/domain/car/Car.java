@@ -18,17 +18,17 @@ public class Car extends BaseEntity {
 
     private String colorCode;
 
-    private CarBrand brand;
+    private String brand;
 
     private String series;
 
     private double year;
 
-    private CarFuelType fuel;
+    private String fuel;
 
-    private CarBody carBody;
+    private String carBody;
 
-    private CarTransmissionType gear;
+    private String gear;
 
     private String imageUrl;
 

@@ -3,6 +3,7 @@ package com.quince.rentingapp.service;
 import com.google.api.client.util.Lists;
 import com.quince.rentingapp.configuration.Avis.ApiSecret;
 import com.quince.rentingapp.configuration.Avis.ApiToken;
+import com.quince.rentingapp.domain.car.CarViewDTO;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,7 +62,7 @@ public class AvisService {
         JSONArray locations=jsonObject.getJSONArray("locations");
         return locations.toString();
     }
-    public String getAvailableCars( 
+    public List<CarViewDTO> getAvailableCars(
             String brand,String pickup_location,
             String pickup_date,String dropoff_date,
             String dropoff_location,String country_code ) throws IOException, JSONException {
@@ -84,7 +85,21 @@ public class AvisService {
         String response = responseEntity.getBody();
         System.out.println("Response status: " + status);
         JSONObject jsonObject = new JSONObject(response);
-        return jsonObject.getJSONArray("vehicles").toString();
+        JSONArray vehicles =jsonObject.getJSONArray("vehicles");
+        List<CarViewDTO> carViewDTOList=Lists.newArrayList();
+        for(int i=0;i<vehicles.length();i++){
+            CarViewDTO tempCar=new CarViewDTO();
+            tempCar.setCarBody(vehicles.getJSONObject(i).getJSONObject("capacity").getString("seats")+" Kişilik");
+            tempCar.setName(vehicles.getJSONObject(i).getJSONObject("category").getString("name"));
+            tempCar.setBrand(vehicles.getJSONObject(i).getJSONObject("category").getString("make"));
+            tempCar.setSeries(vehicles.getJSONObject(i).getJSONObject("category").getString("model"));
+            tempCar.setImageUrl(vehicles.getJSONObject(i).getJSONObject("category").getString("image_url"));
+            tempCar.setGear(vehicles.getJSONObject(i).getJSONObject("category").getString("vehicle_transmission"));
+            tempCar.setPrice(vehicles.getJSONObject(i).getJSONObject("rate_totals").getJSONObject("pay_later").getString("reservation_total")+" "+
+                    vehicles.getJSONObject(i).getJSONObject("rate_totals").getJSONObject("rate").getString("currency")  );
+            carViewDTOList.add(tempCar);
+        }
+        return carViewDTOList;
     }
 
     private void checkToken() throws IOException {

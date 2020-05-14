@@ -3,12 +3,10 @@ package com.quince.rentingapp.controller;
 import com.google.api.client.util.Lists;
 import com.quince.rentingapp.domain.Utils;
 import com.quince.rentingapp.domain.car.*;
-import com.quince.rentingapp.domain.user.UserAddDTO;
 import com.quince.rentingapp.service.AvisService;
 import com.quince.rentingapp.service.CarService;
 import com.quince.rentingapp.service.CurrentUserService;
 import com.quince.rentingapp.service.UploadService;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONException;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +34,7 @@ public class CarController {
          return avisService.getLoc(keyword);
     }
     @PostMapping("/availableCars")
-    public String getAvailableCars(@RequestBody CarSearchQuery searchQuery) throws IOException, JSONException {
+    public List<CarViewDTO> getAvailableCars(@RequestBody CarSearchQuery searchQuery) throws IOException, JSONException {
         return avisService.getAvailableCars(
                 searchQuery.getBrand(), searchQuery.getPickup_location(),
                 searchQuery.getPickup_date(),searchQuery.getDropoff_date(),
@@ -52,7 +50,7 @@ public class CarController {
         return Utils.mapper(carService.findById(id),CarViewDTO.class);
     }
     @GetMapping("/byBrand/{brand}")
-    public List<CarViewDTO> listByBrand(@PathVariable(value = "brand") CarBrand brand){
+    public List<CarViewDTO> listByBrand(@PathVariable(value = "brand") String brand){
         return convertToViewDTO(carService.findByBrand(brand));
     }
     @GetMapping("/byYear/{year}")
@@ -60,15 +58,15 @@ public class CarController {
         return convertToViewDTO(carService.findByYear(year));
     }
     @GetMapping("/byBody/{body}")
-    public List<CarViewDTO> listByBody(@PathVariable(value = "body") CarBody body){
+    public List<CarViewDTO> listByBody(@PathVariable(value = "body") String body){
         return convertToViewDTO(carService.findByBody(body));
     }
     @GetMapping("/byGear/{gear}")
-    public List<CarViewDTO> listByGear(@PathVariable(value = "gear") CarTransmissionType gear){
+    public List<CarViewDTO> listByGear(@PathVariable(value = "gear") String gear){
         return convertToViewDTO(carService.findByTransmission(gear));
     }
     @GetMapping("/byFuel/{fuel}")
-    public List<CarViewDTO> listByFuel(@PathVariable(value = "fuel") CarFuelType fuel){
+    public List<CarViewDTO> listByFuel(@PathVariable(value = "fuel") String fuel){
         return convertToViewDTO(carService.findByFuel(fuel));
     }
     @GetMapping("/availables/{isAvailable}")

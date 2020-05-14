@@ -1,7 +1,5 @@
 package com.quince.rentingapp.repository;
 
-import com.quince.rentingapp.domain.car.Car;
-import com.quince.rentingapp.domain.car.CarBrand;
 import com.quince.rentingapp.domain.driverLicense.DriverLicense;
 import org.springframework.data.jpa.repository.JpaRepository;
 
