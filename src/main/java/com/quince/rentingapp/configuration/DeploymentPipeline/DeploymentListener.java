@@ -54,7 +54,7 @@ public class DeploymentListener {
             if (exitVal == 0) {
                 System.out.println("Success!");
                 System.out.println(output);
-                System.exit(0);
+                //System.exit(0);
             } else {
                 //abnormal...
             }
