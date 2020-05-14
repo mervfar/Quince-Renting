@@ -3,12 +3,14 @@ package com.quince.rentingapp.controller;
 import com.google.api.client.util.Lists;
 import com.quince.rentingapp.domain.Utils;
 import com.quince.rentingapp.domain.car.*;
-import com.quince.rentingapp.domain.user.User;
-import com.quince.rentingapp.domain.user.UserViewDTO;
+import com.quince.rentingapp.domain.user.UserAddDTO;
+import com.quince.rentingapp.service.AvisService;
 import com.quince.rentingapp.service.CarService;
 import com.quince.rentingapp.service.CurrentUserService;
 import com.quince.rentingapp.service.UploadService;
+import jdk.nashorn.internal.objects.annotations.Getter;
 import lombok.RequiredArgsConstructor;
+import org.json.JSONException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,11 +24,29 @@ public class CarController {
     private final CarService carService;
     private final UploadService uploadService;
     private final CurrentUserService currentUser;
+    private final AvisService avisService;
 
     @GetMapping
     public List<CarViewDTO> listAll() {
         return convertToViewDTO(carService.findAll());
     }
+
+    @PostMapping("/locations/{location}")
+    public String getLocations(@PathVariable(value = "location") String keyword) throws JSONException, IOException {
+         return avisService.getLoc(keyword);
+    }
+    @PostMapping("/availableCars")
+    public String getAvailableCars(@RequestBody CarSearchQuery searchQuery) throws IOException, JSONException {
+        return avisService.getAvailableCars(
+                searchQuery.getBrand(), searchQuery.getPickup_location(),
+                searchQuery.getPickup_date(),searchQuery.getDropoff_date(),
+                searchQuery.getDropoff_location(),searchQuery.getCountry_code());
+    }
+    @GetMapping("/availableCars")
+    public CarSearchQuery getSearchQueryBody(){
+        return new CarSearchQuery();
+    }
+
     @GetMapping("/byId/{id}")
     public CarViewDTO findById(@PathVariable(value = "id") Long id){
         return Utils.mapper(carService.findById(id),CarViewDTO.class);

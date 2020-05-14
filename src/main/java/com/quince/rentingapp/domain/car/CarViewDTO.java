@@ -17,4 +17,5 @@ public class CarViewDTO {
     private String imageUrl;
     private String gltfUrl;
     private boolean available;
+
 }

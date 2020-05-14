@@ -9,5 +9,5 @@ public enum CarBrand {
          Lincoln, Lotus, Maserati, Mazda, McLaren, MercedesBenz,
          Mini, Mitsubishi, Nissan, Opel, Peugeot, Porsche, Proton,
          Renault, RollsRoyce, Rover, Saab, Seat, Skoda, Smart,
-         Ssangyong, Subaru, Suzuki, Tata, Tofaş, Toyota, Volkswagen, Volvo
+         Ssangyong, Subaru, Suzuki, Tata, Toyota, Volkswagen, Volvo
          }

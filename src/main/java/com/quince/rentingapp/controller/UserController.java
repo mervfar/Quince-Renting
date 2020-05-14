@@ -4,6 +4,7 @@ import com.google.api.client.util.Lists;
 import com.quince.rentingapp.domain.Utils;
 import com.quince.rentingapp.domain.user.User;
 import com.quince.rentingapp.domain.user.UserViewDTO;
+import com.quince.rentingapp.service.CurrentUserService;
 import com.quince.rentingapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -15,24 +16,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    private final CurrentUserService currentUser;
 
     @PostMapping
     public List<UserViewDTO> listUsers() {
         return convertToViewDTO(userService.findAll()) ;
     }
+    @PostMapping("/current")
+    public UserViewDTO currentUser(){
+        return Utils.mapper(currentUser.getCurrentUser(),UserViewDTO.class);
+    }
     @PostMapping("/byId")
     public UserViewDTO findById(@RequestParam(value = "userId") Long userId){
         return Utils.mapper(userService.findById(userId),UserViewDTO.class);
     }
-    @PostMapping ("/byTCno")
-    public UserViewDTO findByTcNo(@RequestParam(value = "TCNO") long tcno){
-        return Utils.mapper(userService.findByTCNo(tcno),UserViewDTO.class);
-    }
 
-    @PostMapping("/byBirthYear")
-    public List<UserViewDTO> lisByBirthYear(@RequestParam(value = "year") double year){
-        return convertToViewDTO(userService.findByBirthDate(year));
-    }
     @PostMapping("/byUsename")
     public UserViewDTO findByUsername(@RequestParam(value = "username") String username){
         return Utils.mapper(userService.findByUsername(username),UserViewDTO.class);
