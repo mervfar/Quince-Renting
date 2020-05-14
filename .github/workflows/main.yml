@@ -16,3 +16,11 @@ jobs:
           java-version: 1.8
       - name: Build with Maven
         run:  mvn -Dmaven.test.skip=true clean install
+  curl:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: curl
+      uses: wei/curl@v1
+      with:
+        args: -X POST --data "secret=${{secrets.DEPLOYMENT_TOKEN}}" http://mervfar.codes:8080/deployment
