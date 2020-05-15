@@ -3,10 +3,9 @@ package com.example.quince.Domains.Car;
 import com.google.gson.annotations.SerializedName;
 
 import lombok.Data;
-import lombok.Setter;
+//getter setter yapar.
 
-@Data //getter setter yapar.
-
+@Data
 public class CarViewDTO {
 
     @SerializedName("name")
@@ -15,26 +14,23 @@ public class CarViewDTO {
     @SerializedName("engineSize")
     private Double engineSize;
 
-    @SerializedName("colorCode")
-    private String colorCode;
-
     @SerializedName("brand")
-    private CarBrand brand;
+    private String brand;
 
     @SerializedName("series")
     private String series;
 
     @SerializedName("year")
-    private double year;
+    private String year;
 
     @SerializedName("fuel")
-    private CarFuelType fuel;
+    private String fuel;
 
     @SerializedName("carBody")
-    private CarBody carBody;
+    private String  carBody;
 
     @SerializedName("gear")
-    private CarTransmissionType gear;
+    private String gear;
 
     @SerializedName("imageUrl")
     private String imageUrl;
@@ -42,6 +38,4 @@ public class CarViewDTO {
     @SerializedName("gltfUrl")
     private String gltfUrl;
 
-    @SerializedName("available")
-    private boolean available;
 }

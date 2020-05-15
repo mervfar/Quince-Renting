@@ -1,6 +1,7 @@
 package com.example.quince.Configuration.RestService;
 
 import com.example.quince.Domains.Car.CarViewDTO;
+import com.example.quince.Domains.Response.CarResponse;
 import com.example.quince.Domains.Response.UserRegisterRespose;
 import com.example.quince.Domains.Token.Token;
 import com.example.quince.Domains.User.UserAddDTO;
@@ -27,7 +28,7 @@ public interface ApiInterface {
 
     // Arabaları listeleyen servis
     @GET("api/car")
-    Call<List<CarViewDTO>> getAllCars();
+    Call<CarResponse> getAllCars();
 
     //Register For New Users
     @POST("register")

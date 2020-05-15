@@ -10,8 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.quince.R;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -20,6 +23,9 @@ import com.example.quince.R;
 public class hesabim extends Fragment {
 
     Button kayit;
+    TextView isim;
+    TextView soyisim;
+    TextView mail;
     public hesabim() {
         // Required empty public constructor
     }
@@ -31,6 +37,10 @@ public class hesabim extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_hesabim, container, false);
 
+
+        isim=(TextView)view.findViewById(R.id.isim);
+        soyisim=(TextView)view.findViewById(R.id.soyisim);
+        mail=(TextView)view.findViewById(R.id.mail);
 
         kayit = (Button) view.findViewById(R.id.kayit);
         kayit.setOnClickListener(new View.OnClickListener() {

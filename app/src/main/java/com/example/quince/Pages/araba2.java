@@ -1,19 +1,13 @@
 package com.example.quince.Pages;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ShareCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.util.Linkify;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.quince.Domains.Car.CarBrand;
 import com.example.quince.R;
 
 public class araba2 extends AppCompatActivity {

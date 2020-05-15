@@ -50,7 +50,7 @@
         app:layout_constraintVertical_bias="0.105" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/isim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="00"
@@ -64,7 +64,7 @@
         app:layout_constraintVertical_bias="0.347" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="00"
@@ -78,7 +78,7 @@
         app:layout_constraintVertical_bias="0.499" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/soyisim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="00"
