@@ -20,7 +20,7 @@ public class StorageService {
     public String gettoken(Context context){
         preferences=PreferenceManager.getDefaultSharedPreferences(context);
         System.out.println("DEPOOOOOO"+preferences.getString("token",""));
-        return preferences.getString("token","");
+        return "Bearer "+preferences.getString("token","");
     }
     public void storeCreds(String username,String password,Context context){
         preferences=PreferenceManager.getDefaultSharedPreferences(context);
