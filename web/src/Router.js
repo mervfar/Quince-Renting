@@ -32,10 +32,9 @@ export default function Router() {
     if (loginCredentials["access_token"]) {
       getUser(loginCredentials["access_token"]).then((res) => {
         console.log(res);
-        let random = Math.floor(Math.random() * 4) + 1;
         let userCredits = {
           access_inf: loginCredentials,
-          user_inf: res[random],
+          user_inf: res,
         };
         setUserCredentials(userCredits);
         localStorage.setItem("userCredentials", JSON.stringify(userCredits));
@@ -69,10 +68,13 @@ export default function Router() {
           )}
         </Route>
         <Route path="/auth/register">
-          {userCredentials ? (
+          {userCredentials === [] ? (
             <Redirect to="/" />
           ) : (
-            <Register userCredentials={userCredentials} />
+            <Register
+              userCredentials={userCredentials}
+              setLoginCredentials={setLoginCredentials}
+            />
           )}
         </Route>
         <Route path="/profile">

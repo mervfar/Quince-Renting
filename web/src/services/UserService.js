@@ -4,7 +4,7 @@ import { BASE_URL } from "../components/base/Constants";
 export async function getUser(token) {
   let requestOptions = {
     method: "POST",
-    url: `${BASE_URL}/api/user`,
+    url: `${BASE_URL}/api/user/current`,
     headers: {
       Authorization: `Bearer ${token}`,
     },

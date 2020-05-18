@@ -13,7 +13,7 @@ export default function UserButton(props) {
           marginRight: "2em",
         }}
       >
-        {props.username}
+        {props.name}
       </Avatar>
     </React.Fragment>
   );

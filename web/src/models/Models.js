@@ -15,3 +15,12 @@ export const userCredentialsModel = {
     username: null,
   },
 };
+
+export const registerUserInformationModel = {
+  email: "",
+  name: "",
+  password: "",
+  phoneNumber: "",
+  surname: "",
+  username: "",
+};

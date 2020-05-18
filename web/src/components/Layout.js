@@ -20,9 +20,7 @@ export default function Layout(props) {
           extra={
             <div className={styles.authButtonContainer}>
               {props.userCredentials["user_inf"]["username"] ? (
-                <UserButton
-                  username={props.userCredentials["user_inf"]["username"]}
-                />
+                <UserButton name={props.userCredentials["user_inf"]["name"]} />
               ) : (
                 <AuthButton />
               )}

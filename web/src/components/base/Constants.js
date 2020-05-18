@@ -11,7 +11,7 @@
 //   { label: "Antalya", value: "ANT" },
 //   { label: "Adana", value: "ADN" }
 // ];
-export const BASE_URL = `http://mervfar.com:8080`;
+export const BASE_URL = `https://quince.mervfar.codes`;
 
 export const cities = [
   { value: "İstanbul" },

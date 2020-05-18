@@ -16,3 +16,20 @@ export async function signIn(loginData) {
     })
     .catch((error) => console.log("error", error));
 }
+
+export async function register(registerData) {
+  let requestOptions = {
+    method: "POST",
+    url: `${BASE_URL}/register`,
+    headers: {
+      Authorization: "Basic cXVpbmNlOjEyMzQ=",
+    },
+    data: registerData,
+  };
+  return await axios(requestOptions)
+    .then((response) => response.data)
+    .then((result) => {
+      return result;
+    })
+    .catch((error) => console.log("error", error));
+}
