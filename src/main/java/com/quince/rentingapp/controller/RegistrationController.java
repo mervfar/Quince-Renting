@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,17 +30,24 @@ public class RegistrationController {
 
 
     @PostMapping
-    public String  createUser(
+    public Map<String, String> createUser(
             @RequestBody UserAddDTO addDTO,
             @RequestParam(value = "file",required = false) MultipartFile file) throws IOException {
+        HashMap<String,String> result =new HashMap<>();
         if (userService.existsByEmail(addDTO.getEmail())){
             if (userService.existsByUsername(addDTO.getUsername())){
-                return "{\"result\":False,\"info\":\"There is already a user registered with the credentials provided!\"}";
+                result.put("result","False");
+                result.put("info","There is already a user registered with the credentials provided!");
+                return result;
             }
-            return "{\"result\":False,\"info\":\"There is already a user registered with the email provided!\"}";
+            result.put("result","False");
+            result.put("info","There is already a user registered with the email provided!");
+            return result;
         }
         if (userService.existsByUsername(addDTO.getUsername())){
-            return "{\"result\":False,\"info\":\"There is already a user registered with the username provided!\"}";
+            result.put("result","False");
+            result.put("info","There is already a user registered with the username provided!");
+            return result;
         }
         User newUser= Utils.mapper(addDTO,User.class);
         newUser.setUserRole(Role.MEMBER);
@@ -49,7 +58,9 @@ public class RegistrationController {
         final String encodedPassword = bCryptPasswordEncoder.encode(addDTO.getPassword());
         newUser.setPassword(encodedPassword);
         registrationService.saveUser(newUser);
-        return "{\"result\":True,\"info\":\"User has been created!\"}";
+        result.put("result","True");
+        result.put("info","User has been created!");
+        return result;
     }
 
     @GetMapping
