@@ -9,6 +9,8 @@ public class UserViewDTO {
     private String email;
     private String imageUrl;
     private String phoneNumber;
+    private String name;
+    private String surname;
     private Role userRole;
     private DriverLicense driverLicense;
 }
