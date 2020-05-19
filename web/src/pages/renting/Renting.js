@@ -19,7 +19,7 @@ import { CarOutlined } from "@ant-design/icons";
 import { v4 as uuid } from "uuid";
 
 const { RangePicker } = DatePicker;
-export default function Renting() {
+export default function Renting(props) {
   const [city, setCity] = useState("");
   const [date, setDate] = useState();
   const [imageStatus, setImageStatus] = useState(true); // TODO: Skeleton ayarlanacak!
@@ -79,14 +79,16 @@ export default function Renting() {
               </Button>
             </>
           ) : (
-            <Skeleton className={styles.skeleton} />
+            <Skeleton
+              className={styles.skeleton}
+            /> /* Veriler gelene kadar kullanıcıya skeleton gösterilmesi gerekiyor! */
           )}
         </div>
       );
     });
   };
   return (
-    <Layout>
+    <Layout userCredentials={props.userCredentials}>
       <Card className={`card card-bg ${styles.card}`}>
         <div className={styles.overlay}></div>
         <Row>
@@ -135,7 +137,7 @@ export default function Renting() {
                   direction="vertical"
                   style={{ margin: "2em", marginLeft: "15%" }}
                 >
-                  {generateCars()}
+                  {generateCars()} {/* Araç listeleme yapılan yer */}
                 </Space>
               </Card>
             )}

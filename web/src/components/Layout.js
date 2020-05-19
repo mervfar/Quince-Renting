@@ -1,9 +1,10 @@
 import React from "react";
 import logo from "../assets/logo.svg";
-import { PageHeader, Button, Layout as LayoutAnt } from "antd";
+import { PageHeader, Layout as LayoutAnt } from "antd";
 import styles from "./layout.module.scss";
 import { Link } from "react-router-dom";
-import { UserOutlined, UserAddOutlined } from "@ant-design/icons";
+import AuthButton from "./AuthButton";
+import UserButton from "./UserButton";
 
 const { Content } = LayoutAnt;
 export default function Layout(props) {
@@ -18,20 +19,12 @@ export default function Layout(props) {
           }
           extra={
             <div className={styles.authButtonContainer}>
-              <Link to="/auth/login">
-                <Button
-                  size="large"
-                  type="link"
-                  className={styles.signInButton}
-                >
-                  <UserOutlined /> Giriş Yap
-                </Button>
-              </Link>
-              <Link to="/auth/register">
-                <Button size="large" className={styles.signUpButton}>
-                  <UserAddOutlined /> Üye Ol!
-                </Button>
-              </Link>
+              {props.userCredentials["user_inf"]["username"] ? (
+                <UserButton name={props.userCredentials["user_inf"]["name"]} />
+              ) : (
+                <AuthButton />
+              )}
+              {/* {console.log(props)} */}
             </div>
           }
         />
