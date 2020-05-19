@@ -13,6 +13,8 @@ export const userCredentialsModel = {
     tcno: null,
     userRole: null,
     username: null,
+    name: null,
+    surname: null,
   },
 };
 
@@ -20,7 +22,20 @@ export const registerUserInformationModel = {
   email: "",
   name: "",
   password: "",
+  confirm: "",
   phoneNumber: "",
   surname: "",
   username: "",
+  agreement: false,
+};
+export const registerDriverLicenceModel = {
+  birthDate: "",
+  birthLocation: "",
+  dateOfIssue: "",
+  documentNo: 0,
+  name: "",
+  office: "",
+  surname: "",
+  tcno: 0,
+  validTime: "",
 };
