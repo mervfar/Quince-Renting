@@ -9,6 +9,7 @@ import com.quince.rentingapp.domain.user.UserViewDTO;
 import com.quince.rentingapp.service.CurrentUserService;
 import com.quince.rentingapp.service.DriverLicenseService;
 import com.quince.rentingapp.service.LicenseCategoryService;
+import com.quince.rentingapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ public class DriverLicenseController {
     private final DriverLicenseService driverLicenseService;
     private final LicenseCategoryService licenseCategoryService;
     private final CurrentUserService currentUser;
+    private final UserService userService;
 
     @PostMapping()
     public List<DriverLicenseViewDTO> listAll(){
@@ -47,11 +49,11 @@ public class DriverLicenseController {
         return new DriverLicenseAddDTO();
     }
     @PostMapping("/save")
-    public String saveLicense(@RequestBody DriverLicenseAddDTO AddDTO){
-        DriverLicense license=Utils.mapper(AddDTO,DriverLicense.class);
+    public String saveLicense(@RequestBody DriverLicenseAddDTO newLicense){
+        DriverLicense license=Utils.mapper(newLicense,DriverLicense.class);
         User user=currentUser.getCurrentUser();
-        license.setUser(user);
-        driverLicenseService.saveDriverLicense(license);
+        user.setDriverLicense(license);
+        userService.saveUser(user);
         return  "{\"result\":\"OK\"}";
     }
     @GetMapping("/addCategory")
@@ -67,7 +69,7 @@ public class DriverLicenseController {
         //category.setActive(false); //En başta false olarak alabiliriz belki
         licenseCategoryService.saveLicenseCategory(category);
         licenseToUpdate.getLicenseCategoryList().add(category);
-         driverLicenseService.saveDriverLicense(licenseToUpdate);
+        driverLicenseService.saveDriverLicense(licenseToUpdate);
         return  "{\"result\":\"OK\"}";
     }
     @DeleteMapping("/deleteByDocNo/{docNo}")

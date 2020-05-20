@@ -31,6 +31,9 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id).
         orElseThrow(() -> new ResourceAccessException("User with " + id + " not found"));
     }
+    public User saveUser(User user){
+        return userRepository.save(user);
+    }
 
     public Boolean existsByEmail(String email){
         return userRepository.existsByEmail(email);
