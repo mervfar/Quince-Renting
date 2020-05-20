@@ -22,27 +22,10 @@ public class CarController {
     private final CarService carService;
     private final UploadService uploadService;
     private final CurrentUserService currentUser;
-    private final AvisService avisService;
 
     @GetMapping
     public List<CarViewDTO> listAll() {
         return convertToViewDTO(carService.findAll());
-    }
-
-    @PostMapping("/locations/{location}")
-    public String getLocations(@PathVariable(value = "location") String keyword) throws JSONException, IOException {
-         return avisService.getLoc(keyword);
-    }
-    @PostMapping("/availableCars")
-    public List<CarViewDTO> getAvailableCars(@RequestBody CarSearchQuery searchQuery) throws IOException, JSONException {
-        return avisService.getAvailableCars(
-                searchQuery.getBrand(), searchQuery.getPickup_location(),
-                searchQuery.getPickup_date(),searchQuery.getDropoff_date(),
-                searchQuery.getDropoff_location(),searchQuery.getCountry_code());
-    }
-    @GetMapping("/availableCars")
-    public CarSearchQuery getSearchQueryBody(){
-        return new CarSearchQuery();
     }
 
     @GetMapping("/byId/{id}")
