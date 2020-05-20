@@ -28,7 +28,7 @@ public class AvisService {
     final String AVAILABLE_CAR_ENDPOINT="/cars/catalog/v1/vehicles";
     ApiToken apiToken=new ApiToken();
 
-    private void getToken() throws IOException {
+    private void getToken() throws IOException, JSONException {
         RestTemplate rest = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.add("client_id", secret.getClient_id());
@@ -102,7 +102,7 @@ public class AvisService {
         return carViewDTOList;
     }
 
-    private void checkToken() throws IOException {
+    private void checkToken() throws IOException, JSONException {
         if (apiToken.getAccess_token()==null){
             getToken();
         }else if (apiToken.isExpired()){
