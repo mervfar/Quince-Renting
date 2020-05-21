@@ -1,8 +1,11 @@
 package com.quince.rentingapp.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.quince.rentingapp.domain.BaseEntity;
 import com.quince.rentingapp.domain.driverLicense.DriverLicense;
+import com.quince.rentingapp.domain.driverLicense.LicenseCategory;
+import com.quince.rentingapp.domain.invoice.Invoice;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -12,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -37,6 +42,10 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "license_id", referencedColumnName = "id")
     private DriverLicense driverLicense;
+
+    @JsonManagedReference
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user",cascade = CascadeType.REMOVE)
+    private Set<Invoice> invoiceList = new HashSet<>();
 
 
     private Role userRole;
