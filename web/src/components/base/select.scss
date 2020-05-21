@@ -1,0 +1,39 @@
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  text-align: center;
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 50px;
+  -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  width: 100%;
+  height: 3em;
+  padding: 0 11px;
+}
+.ant-input-search {
+  border-radius: 50px;
+  width: 100%;
+  height: 3em;
+}
+.ant-input-suffix {
+  align-self: center;
+}
+.ant-input {
+  text-align: center;
+}
+.ant-input-group > .ant-input:first-child,
+.ant-input-group-addon:first-child {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.ant-select-single .ant-select-selector .ant-select-selection-item,
+.ant-select-single .ant-select-selector .ant-select-selection-placeholder {
+  margin-top: 0.3em;
+  font-size: 1rem;
+}
+.ant-select-show-search.ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector {
+  cursor: text;
+  width: 100%;
+}
