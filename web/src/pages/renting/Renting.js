@@ -33,7 +33,6 @@ import {
 import AvisLogo from "../../assets/avis_logo.svg";
 import BudgetLogo from "../../assets/budget_logo.svg";
 import Select from "../../components/base/Select";
-
 const { RangePicker } = DatePicker;
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 export default function Renting(props) {
