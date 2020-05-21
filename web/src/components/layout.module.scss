@@ -50,24 +50,26 @@
   border: 2px solid #f37335;
   color: white;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: ease-out 0.5s;
+  user-select: none;
 }
 .signUpButton:hover {
   background: #f37335; /* fallback for old browsers */
-  border-radius: 5px;
-  border: 0px solid #f37335;
+  border: 2px solid #f37335;
   color: white;
+  box-shadow: 0 0.5px 1.5px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
 }
 .signUpButton:focus {
   background: #f37335; /* fallback for old browsers */
   border-radius: 5px;
-  border: 0px solid #f37335;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   color: white;
   box-shadow: none;
 }
 .signUpButton:active {
   background: #f37335; /* fallback for old browsers */
   border-radius: 5px;
-  border: 0px solid #f37335;
   color: white;
   box-shadow: none;
 }
