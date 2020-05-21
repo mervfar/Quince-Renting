@@ -1,5 +1,6 @@
 package com.quince.rentingapp.domain.driverLicense;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.quince.rentingapp.domain.BaseEntity;
 import com.quince.rentingapp.domain.user.User;
@@ -27,6 +28,7 @@ public class DriverLicense extends BaseEntity {
     private boolean intern;
     private boolean valid;
 
+    @JsonBackReference
     @OneToOne(mappedBy = "driverLicense")
     private User user;
 

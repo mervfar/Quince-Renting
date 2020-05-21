@@ -13,5 +13,4 @@ public class UserViewDTO {
     private String name;
     private String surname;
     private Role userRole;
-    private DriverLicenseViewDTO driverLicense;
 }
