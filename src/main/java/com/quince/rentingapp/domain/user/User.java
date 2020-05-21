@@ -34,7 +34,7 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     @Transient
     private MultipartFile imageFile;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "license_id", referencedColumnName = "id")
     private DriverLicense driverLicense;
 
