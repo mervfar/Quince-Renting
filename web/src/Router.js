@@ -14,7 +14,7 @@ export default function Router() {
     userCredentialsModel
   );
   async function checkTokenValidity() {
-    if (localUserCredits) {
+    if (localUserCredits && localUserCredits !== userCredentialsModel) {
       await getUser(localUserCredits["access_inf"]["access_token"])
         .then((res) => {
           console.log("başarılı");
@@ -58,7 +58,7 @@ export default function Router() {
           <Renting userCredentials={userCredentials} />
         </Route>
         <Route path="/auth/login">
-          {userCredentials === [] ? (
+          {userCredentials !== userCredentialsModel ? (
             <Redirect to="/" />
           ) : (
             <Login
@@ -68,7 +68,7 @@ export default function Router() {
           )}
         </Route>
         <Route path="/auth/register">
-          {userCredentials === [] ? (
+          {userCredentials !== userCredentialsModel ? (
             <Redirect to="/" />
           ) : (
             <Register
@@ -84,23 +84,3 @@ export default function Router() {
     </BrowserRouter>
   );
 }
-
-// function PrivateRoute({ children, ...rest }) {
-//   return (
-//     <Route
-//       {...rest}
-//       render={({ location }) =>
-//         fakeAuth.isAuthenticated ? (
-//           children
-//         ) : (
-//           <Redirect
-//             to={{
-//               pathname: "/auth/login",
-//               state: { from: location },
-//             }}
-//           />
-//         )
-//       }
-//     />
-//   );
-// }

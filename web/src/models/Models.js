@@ -39,3 +39,33 @@ export const registerDriverLicenceModel = {
   tcno: 0,
   validTime: "",
 };
+
+export const availableCarsModel = {
+  brand: "",
+  country_code: "TR",
+  dropoff_date: "",
+  dropoff_location: "",
+  pickup_date: "",
+  pickup_location: "",
+};
+
+export const locationsModel = [
+  {
+    brand: "Avis",
+    name: "",
+    code: "",
+  },
+];
+
+export const carDetailsModel = [
+  {
+    brand: "",
+    series: "",
+    price: "",
+    fuel: "",
+    carBody: "",
+    office: "AVIS Maslak",
+    gear: "",
+    imageUrl: "",
+  },
+];

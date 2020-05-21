@@ -31,11 +31,17 @@
   height: 55vh;
   overflow: scroll;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: ease-out 0.5s;
+  background: #eef2f5;
   border-radius: 10px;
+  user-select: none;
+}
+.cars:hover {
+  box-shadow: 0 0.5px 1.5px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 .datepicker {
-  margin: 1em;
-  margin-top: 2em;
+  margin: 1em 0 1em 0;
+  width: 100%;
 }
 .overlay {
   position: absolute;
@@ -57,15 +63,26 @@
   width: 100%;
   height: 100%;
 }
-
 .car {
   padding: 1em;
+  background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.2);
+
   border-radius: 5px;
-  transition: all 0.1s ease-in-out;
+  transition: ease-out 0.5s;
   display: flex;
   width: 50em;
+  user-select: none;
 }
+
+.car:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-color: rgb(68, 176, 255);
+  .rentButton {
+    opacity: 1;
+  }
+}
+
 .rentButton {
   position: absolute;
   bottom: -1.2em;
@@ -87,11 +104,18 @@
   border-radius: 50%;
 }
 
-.car:hover {
+.information {
+  border-radius: 5px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  border-color: rgb(68, 176, 255);
-  transform: scale(1.01);
-  .rentButton {
-    opacity: 1;
-  }
+  transition: ease-out 0.5s;
+  background: #eef2f5;
+}
+.information:hover {
+  box-shadow: 0 0.5px 1.5px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.options {
+  margin-top: 1em;
+}
+.skeleton {
+  background: #eef2f5;
 }
