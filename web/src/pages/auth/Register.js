@@ -14,6 +14,7 @@ import {
   Spin,
   Alert,
   DatePicker,
+  message,
 } from "antd";
 import { QuestionCircleOutlined, LoadingOutlined } from "@ant-design/icons";
 import { Link, useHistory } from "react-router-dom";
@@ -71,8 +72,7 @@ export default function Register(props) {
   let history = useHistory();
   const [current, setcurrent] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [errorFlag, setErrorFlag] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
+
   const [userFormValues, setUserFormValues] = useState(
     registerUserInformationModel
   );
@@ -108,19 +108,6 @@ export default function Register(props) {
         scrollToFirstError
         style={{ overflow: "scroll" }}
       >
-        {errorFlag ? (
-          <Alert
-            message="Kaydınız Başarısız!"
-            description={errorMsg}
-            type="error"
-            showIcon
-            style={{
-              marginBottom: "3em",
-              width: "60%",
-              marginLeft: "20%",
-            }}
-          />
-        ) : null}
         <Form.Item
           name="name"
           label="Adınız"
@@ -471,30 +458,31 @@ export default function Register(props) {
       userFormValues.confirm === ""
     ) {
       setLoading(false);
-      setErrorFlag(true);
       if (registerData.name === "") {
-        setErrorMsg("Devam edebilmek için isminize ihtiyacımız var! :)");
+        message.info("Devam edebilmek için isminize ihtiyacımız var! :)");
       } else if (registerData.email === "") {
-        setErrorMsg(
+        message.info(
           "Devam edebilmek için e-posta adresinize ihtiyacımız var! :)"
         );
       } else if (registerData.password === "") {
-        setErrorMsg("Devam edebilmek için parola girmenize ihtiyacımız var! :");
+        message.info(
+          "Devam edebilmek için parola girmenize ihtiyacımız var! :)"
+        );
       } else if (userFormValues.confirm === "") {
-        setErrorMsg(
-          "Devam edebilmek için formu tam olarak doldurmanıza ihtiyacımız var! :"
+        message.info(
+          "Devam edebilmek için formu tam olarak doldurmanıza ihtiyacımız var! :)"
         );
       } else if (registerData.username === "") {
-        setErrorMsg(
+        message.info(
           "Devam edebilmek için eşsiz bir kullanıcı adı seçmek istemez misiniz? :)"
         );
       } else if (registerData.phoneNumber === "") {
-        setErrorMsg(
+        message.info(
           "Devam edebilmek için telefon numaranıza ihtiyacımız var! :)"
         );
       } else if (userFormValues.agreement === false) {
-        setErrorMsg(
-          "Devam edebilmek için kullanım sözleşmemizi kabul etmenize ihtiyacımız var! :"
+        message.info(
+          "Devam edebilmek için kullanım sözleşmemizi kabul etmenize ihtiyacımız var! :)"
         );
         console.log(userFormValues);
       }
@@ -515,26 +503,25 @@ export default function Register(props) {
             setLoading(false);
           }, 2000);
         } else {
-          setErrorFlag(true);
           if (
             res["info"] ===
             "There is already a user registered with the username provided!"
           )
-            setErrorMsg(
+            message.warning(
               `'${userFormValues.username}' kullanıcı adı alınmış. Yeni eşsiz bir kullanıcı adı seçebilir misiniz? :)`
             );
           else if (
             res["info"] ===
             "There is already a user registered with the email provided!"
           )
-            setErrorMsg(
+            message.warning(
               `'${userFormValues.email}' adresi ile bir üyelik bulunuyor. Giriş yapmayı unutmuş olabilir misiniz? :)`
             );
           else if (
             res["info"] ===
             "There is already a user registered with the credentials provided!"
           )
-            setErrorMsg(
+            message.warning(
               `Verdiğiniz bilgiler ile bir üyelik bulunuyor. Giriş yapmayı unutmuş olabilir misiniz? :)`
             );
         }
@@ -564,7 +551,6 @@ export default function Register(props) {
         setcurrent(current + 1);
         setLoading(false);
       } else {
-        setErrorFlag(true);
       }
       setLoading(false);
     });
