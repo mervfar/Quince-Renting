@@ -16,6 +16,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -45,7 +46,7 @@ public class User extends BaseEntity implements UserDetails, Serializable {
 
     @JsonManagedReference
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "user",cascade = CascadeType.REMOVE)
-    private Set<Invoice> invoiceList = new HashSet<>();
+    private List<Invoice> invoiceList;
 
 
     private Role userRole;
