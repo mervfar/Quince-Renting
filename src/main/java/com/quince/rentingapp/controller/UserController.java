@@ -64,11 +64,21 @@ public class UserController {
         return userService.existsByEmail(email);
     }
     @PostMapping("/edit")
-    public Map<String,String> updateProfilePicture(@RequestParam(value = "file") MultipartFile file) throws IOException {
+    public Map<String,String> updateProfile(
+            @RequestParam(value = "file") MultipartFile file,
+            @RequestParam(value = "email",required = false) String email,
+            @RequestParam(value = "phone",required = false) String phone
+            ) throws IOException {
         HashMap<String,String> result =new HashMap<>();
         User user =userService.findById(currentUser.getCurrentUser().getId());
         String imageUrl=uploadService.uploadFile(file,user.getUsername());
         user.setImageUrl(imageUrl);
+        if(email!=null){
+            user.setEmail(email);
+        }
+        if (phone!=null){
+            user.setPhoneNumber(phone);
+        }
         userService.saveUser(user);
         result.put("info","Uploaded!");
         result.put("data",imageUrl);
