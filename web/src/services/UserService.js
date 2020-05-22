@@ -14,7 +14,8 @@ export async function getUser(token) {
     .then((response) => response.data)
     .then((result) => {
       return result;
-    });
+    })
+    .catch((error) => console.log("error", error));
 }
 
 export async function registerDriverLicenceService(driverLicenceData) {
@@ -30,7 +31,8 @@ export async function registerDriverLicenceService(driverLicenceData) {
     .then((response) => response.data)
     .then((result) => {
       return result;
-    });
+    })
+    .catch((error) => console.log("error", error));
 }
 
 export async function setUserPhoto(formData) {
@@ -46,5 +48,55 @@ export async function setUserPhoto(formData) {
     .then((response) => response.data)
     .then((result) => {
       return result;
-    });
+    })
+    .catch((error) => console.log("error", error));
+}
+
+export async function checkIdentity(identityData) {
+  let requestOptions = {
+    method: "POST",
+    url: `${BASE_URL}/api/validation`,
+    headers: {
+      Authorization: `Bearer ${gtoken}`,
+    },
+    data: identityData,
+  };
+  return await axios(requestOptions)
+    .then((response) => response.data)
+    .then((result) => {
+      return result;
+    })
+    .catch((error) => console.log("error", error));
+}
+
+export async function rentCars(rentingData) {
+  let requestOptions = {
+    method: "POST",
+    url: `${BASE_URL}/api/invoice/save`,
+    headers: {
+      Authorization: `Bearer ${gtoken}`,
+    },
+    data: rentingData,
+  };
+  return await axios(requestOptions)
+    .then((response) => response.data)
+    .then((result) => {
+      return result;
+    })
+    .catch((error) => console.log("error", error));
+}
+export async function getInvoice() {
+  let requestOptions = {
+    method: "POST",
+    url: `${BASE_URL}/api/invoice/byUser`,
+    headers: {
+      Authorization: `Bearer ${gtoken}`,
+    },
+  };
+  return await axios(requestOptions)
+    .then((response) => response.data)
+    .then((result) => {
+      return result;
+    })
+    .catch((error) => console.log("error", error));
 }

@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import {
   Card,
   DatePicker,
-  Space,
   Typography,
   Row,
   Col,
   Button,
-  Empty,
   Skeleton,
   Spin,
   Select as SelectAntd,
-  Statistic,
   message,
+  Divider,
+  Tag,
+  Modal,
 } from "antd";
 import moment from "moment";
 import Layout from "../../components/Layout";
@@ -22,6 +22,7 @@ import { cities } from "../../components/base/Constants";
 import { CarOutlined } from "@ant-design/icons";
 import { v4 as uuid } from "uuid";
 import { getLocations, getCars } from "../../services/CarService";
+import { rentCars } from "../../services/UserService";
 import { LoadingOutlined } from "@ant-design/icons";
 // eslint-disable-next-line
 import {
@@ -33,6 +34,7 @@ import {
 import AvisLogo from "../../assets/avis_logo.svg";
 import BudgetLogo from "../../assets/budget_logo.svg";
 import Select from "../../components/base/Select";
+
 const { RangePicker } = DatePicker;
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 export default function Renting(props) {
@@ -43,9 +45,14 @@ export default function Renting(props) {
   const [carCardFlag, setCarCardFlag] = useState(false);
   const [loadingCar, setLoadingCar] = useState(false);
   const [locations, setLocations] = useState(locationsModel);
+  const [locationsBase, setLocationsBase] = useState(locationsModel);
   const [carDetails, setCarDetails] = useState(carDetailsModel);
   const [selectedLocation, setSelectedLocation] = useState("");
-  const [imageStatus, setImageStatus] = useState(true); // TODO: Skeleton ayarlanacak!
+  const [modalText, setModalText] = useState("");
+  const [modalFlag, setModalFlag] = useState(false);
+  const [modalLoading, setModalLoading] = useState(false);
+  const [selectedCar, setSelectedCar] = useState({});
+
   const renderItem = (name, code, brand) => {
     // eslint-disable-next-line
     const AvisLogo2 = AvisLogo;
@@ -91,6 +98,7 @@ export default function Renting(props) {
           return renderItem(l.name, l.code, l.brand);
         });
         setLocations(locationItems);
+        setLocationsBase(location);
         console.log(location);
       })
       .catch((err) => {
@@ -159,62 +167,120 @@ export default function Renting(props) {
         setLoading(false);
       });
   };
-  const handleImageLoaded = () => {
-    setImageStatus(true);
-    console.log(imageStatus);
+  const rentCar = (name, price) => {
+    setModalLoading(true);
+    const locationDetails = selectedLocation.split(" ");
+    let pickUpDate = date[0].split(" ");
+    pickUpDate = pickUpDate[0] + "T" + pickUpDate[1] + ":00";
+    let dropOffDate = date[1].split(" ");
+    dropOffDate = dropOffDate[0] + "T" + dropOffDate[1] + ":00";
+    const selectLocation = locationsBase.filter((l) => {
+      if (l.code === locationDetails[1]) return l.name;
+    });
+    console.log(selectLocation);
+    const rentingOptions = {
+      carFee: price,
+      carInfo: name,
+      rentingStart: pickUpDate,
+      rentingEnd: dropOffDate,
+      pickUpLocation: selectLocation[0].name,
+      dropOffLocation: selectLocation[0].name,
+    };
+    console.log(rentingOptions);
+    rentCars(rentingOptions)
+      .then((res) => {
+        console.log(res);
+        setTimeout(() => {
+          setModalLoading(false);
+          message.success("Tebrikler! Aracınızı başarıyla kiraladınız!");
+        }, 1000);
+      })
+      .catch((err) => {
+        message.warning("Araç kiralamak için giriş yapmak zorundasınız!");
+      })
+      .finally(() => {
+        setModalFlag(false);
+      });
   };
+  function showModal(name, price) {
+    setModalFlag(true);
+    setModalText(
+      `${name} aracı toplam ${price} ₺ karşılığında kiralanacaktır. Onaylıyor musunuz?`
+    );
+    setSelectedCar({ name: name, price: price });
+  }
+
   const generateCars = () => {
     return carDetails.map((e) => {
       return (
         <div className={styles.car} key={uuid()}>
-          {!loadingCar ? (
+          {!loadingCar || 1 ? (
             <>
-              <Row>
-                <Col span={8}>
-                  <Statistic title={e.brand + " " + e.series} value={" "} />
-                </Col>
-                <Col span={16}>
-                  <img
-                    src={e.imageUrl}
-                    style={{
-                      width: "200px",
-                      marginLeft: "-30px",
-                      marginRight: "30px",
-                    }}
-                    onLoad={() => handleImageLoaded()}
-                    onError={() => handleImageLoaded()}
-                    alt="car"
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Col span={6}>
-                  <Statistic title="Fiyat" value={e.price * 8} suffix="₺" />
-                </Col>
-                <Col span={6}>
-                  <Statistic title="Motor" value={e.carBody} />
-                </Col>
-                <Col span={6}>
-                  <Statistic
-                    title="Yakıt Tipi"
-                    value={e.fuel ? e.fuel : "Benzin"}
-                  />
-                </Col>
-                <Col span={6}>
-                  <Statistic
-                    title="Vites"
-                    value={e.gear === "Manual" ? "Manuel" : "Otomatik"}
-                  />
-                </Col>
-              </Row>
-              <Button
-                type="primary"
-                shape="round"
-                size="large"
-                className={styles.rentButton}
+              <Row
+                gutter={32}
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                }}
               >
-                Kirala
-              </Button>
+                <Col span={12}>
+                  <div className={styles.carDetails}>
+                    <Divider orientation="left">
+                      Segment - Marka - Model
+                    </Divider>
+                    <div>
+                      <Tag color="geekblue" className={styles.infoTag}>
+                        {e.name}
+                      </Tag>
+                    </div>
+                    <Divider orientation="left">Günlük Fiyat</Divider>
+                    <div>
+                      <Tag color="geekblue" className={styles.infoTag}>
+                        {e.price + "₺"}
+                      </Tag>
+                    </div>
+                    <Divider orientation="left">Araç Tipi</Divider>
+                    <div>
+                      <Tag color="geekblue" className={styles.infoTag}>
+                        {e.carBody}
+                      </Tag>
+                    </div>
+                    <Divider orientation="left">Yakıt Tipi</Divider>
+                    <div>
+                      <Tag color="purple" className={styles.infoTag}>
+                        {e.fuel ? e.fuel : "Benzin"}
+                      </Tag>
+                    </div>
+                    <Divider orientation="left">Vites</Divider>
+                    <div>
+                      <Tag color="volcano" className={styles.infoTag}>
+                        {e.gear === "Manual" ? "Manuel" : "Otomatik"}
+                      </Tag>
+                    </div>
+
+                    {/*  */}
+                  </div>
+                </Col>
+                <Col span={12}>
+                  <div className={styles.carImg}>
+                    <img
+                      style={{ width: "300px" }}
+                      src={e.imageUrl}
+                      alt={`car-${uuid()}`}
+                    />
+                  </div>
+                  <Button
+                    type="primary"
+                    shape="round"
+                    size="large"
+                    key={uuid()}
+                    className={styles.rentButton}
+                    onClick={() => showModal(e.name, e.price)}
+                  >
+                    Hemen Kirala!
+                  </Button>
+                </Col>
+              </Row>
             </>
           ) : null}
         </div>
@@ -240,7 +306,19 @@ export default function Renting(props) {
           </Col>
         </Row>
         <Row gutter={[16, 16]}>
-          <Col span={6} style={{ marginTop: "8%" }}>
+          <Col
+            span={!carCardFlag ? 24 : 6}
+            style={
+              !carCardFlag
+                ? {
+                    marginTop: "10%",
+                    maxWidth: "40%",
+                    minHeight: "70%",
+                    marginLeft: "30%",
+                  }
+                : { marginTop: "8%" }
+            }
+          >
             <Spin indicator={antIcon} spinning={loading} size="large">
               <Card className={styles.information} title="Günlük Kiralama">
                 <AutoComplete
@@ -278,15 +356,11 @@ export default function Renting(props) {
             </Spin>
           </Col>
           <Col span={16} offset={1}>
-            {!carCardFlag && (
-              <div className={styles.empty}>
-                <Empty description="Size en uygun araçları bulabilmemiz için lütfen yandaki bilgileri doldurabilir misiniz? :)" />
-              </div>
-            )}
             {carCardFlag && (
               <Card
                 className={styles.cars}
                 title="İşte size en uygun araçları aşağıda listeledik."
+                headStyle={{ marginLeft: "2em", marginTop: "1.5em" }}
               >
                 {" "}
                 <Skeleton
@@ -294,20 +368,22 @@ export default function Renting(props) {
                   active={true}
                   loading={loadingCar}
                 >
-                  <Space
-                    size="large"
-                    direction="vertical"
-                    style={{ margin: "2em", marginLeft: "15%" }}
-                  >
-                    {carDetails !== carDetailsModel && generateCars()}{" "}
-                    {/* Araç listeleme yapılan yer */}
-                  </Space>
+                  {carDetails !== carDetailsModel && generateCars()}{" "}
+                  {/* {1 && generateCars()}{" "} */}
                 </Skeleton>
               </Card>
             )}
           </Col>
         </Row>
-
+        <Modal
+          title={"Aracınız kiralanıyor..."}
+          visible={modalFlag}
+          onOk={() => rentCar(selectedCar.name, selectedCar.price)}
+          confirmLoading={modalLoading}
+          onCancel={() => setModalFlag(false)}
+        >
+          <p>{modalText}</p>
+        </Modal>
         <div className={styles.content}></div>
       </Card>
     </Layout>

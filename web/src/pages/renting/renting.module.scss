@@ -67,26 +67,33 @@
   padding: 1em;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.2);
-
   border-radius: 5px;
   transition: ease-out 0.5s;
-  display: flex;
-  width: 50em;
+  flex-direction: column;
+  margin-right: 1em;
+  margin-left: 1em;
   user-select: none;
+  margin-top: 1em;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .car:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  border-color: rgb(68, 176, 255);
+  box-shadow: 0 0.5px 1.5px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
   .rentButton {
     opacity: 1;
   }
 }
+.infoTag {
+  margin-left: 2em;
+}
 
 .rentButton {
   position: absolute;
-  bottom: -1.2em;
-  right: 1.5em;
+  bottom: 1em;
+  right: 2em;
   opacity: 0;
 }
 .empty {
@@ -118,4 +125,14 @@
 }
 .skeleton {
   background: #eef2f5;
+}
+.carDetails {
+  padding: 1.5em;
+}
+.carImg {
+  align-items: flex-start;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 2em;
 }

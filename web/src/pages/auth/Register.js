@@ -12,13 +12,11 @@ import {
   Divider,
   Result,
   Spin,
-  Alert,
-  DatePicker,
   message,
 } from "antd";
 import { QuestionCircleOutlined, LoadingOutlined } from "@ant-design/icons";
-import { Link, useHistory } from "react-router-dom";
-import moment from "moment";
+import { useHistory } from "react-router-dom";
+
 import styles from "./register.module.scss";
 import { v4 as uuid } from "uuid";
 import {
@@ -26,7 +24,30 @@ import {
   registerDriverLicenceModel,
 } from "./../../models/Models";
 import { signIn, register } from "../../services/AuthService";
-import { registerDriverLicenceService } from "../../services/UserService";
+import {
+  registerDriverLicenceService,
+  checkIdentity,
+} from "../../services/UserService";
+import DriverLicenceForm from "../../components/base/DriverLicenceForm";
+
+// eslint-disable-next-line
+String.prototype.turkishToLower = function () {
+  var string = this;
+  var letters = { İ: "i", I: "ı", Ş: "ş", Ğ: "ğ", Ü: "ü", Ö: "ö", Ç: "ç" };
+  string = string.replace(/(([İIŞĞÜÇÖ]))/g, function (letter) {
+    return letters[letter];
+  });
+  return string.toLowerCase();
+};
+// eslint-disable-next-line
+String.prototype.turkishToUpper = function () {
+  var string = this;
+  var letters = { i: "İ", ş: "Ş", ğ: "Ğ", ü: "Ü", ö: "Ö", ç: "Ç", ı: "I" };
+  string = string.replace(/(([iışğüçö]))/g, function (letter) {
+    return letters[letter];
+  });
+  return string.toUpperCase();
+};
 
 const { Step } = Steps;
 const { Option } = Select;
@@ -80,14 +101,7 @@ export default function Register(props) {
     registerDriverLicenceModel
   );
   let registerData = {};
-  const disabledBeforeMomentDate = (current) => {
-    // Can not select days before today and today
-    return current && current < moment().endOf("day");
-  };
-  const disabledAfterMomentDate = (current) => {
-    // Can not select days before today and today
-    return current && current > moment().endOf("day");
-  };
+
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select style={{ width: 70 }}>
@@ -232,192 +246,16 @@ export default function Register(props) {
   };
   const registerDriverLicence = () => {
     return (
-      <Form
-        {...formItemLayout}
-        name="register"
-        onValuesChange={onDriverLicenceFormValuesChange}
-        initialValues={{
-          prefix: "90",
-        }}
-        scrollToFirstError
-        style={{ overflow: "scroll" }}
-      >
-        <Alert
-          message="Kaydınız Başarılı !"
-          description="Ehliyet bilgilerinizi de tamamlayarak hemen araç kiralamaya başlayabilirsiniz!"
-          type="success"
-          showIcon
-          style={{
-            marginBottom: "3em",
-            width: "60%",
-            marginLeft: "20%",
-          }}
-        />
-        <Form.Item
-          name="name"
-          label="İsim"
-          rules={[
-            {
-              required: true,
-              message: "Lütfen isminizi ve soyisminizi giriniz!",
-            },
-          ]}
-        >
-          <Input
-            disabled
-            placeholder={`${props.userCredentials["user_inf"].name} ${props.userCredentials["user_inf"].surname}`}
-          />
-        </Form.Item>
-
-        <Form.Item
-          name="birthDate"
-          label="Doğum Tarihi"
-          rules={[
-            {
-              required: true,
-              message: "Lütfen doğum tarihinizi giriniz!",
-            },
-          ]}
-          hasFeedback
-        >
-          <DatePicker
-            placeholder="17.06.1999"
-            size="large"
-            format="DD.MM.YYYY"
-            disabledDate={disabledAfterMomentDate}
-            onChange={(date, dateString) =>
-              handleDatePickerDateChange("birthDate", dateString)
-            }
-          />
-        </Form.Item>
-        <Form.Item
-          name="birthLocation"
-          label="Doğum Yeri"
-          rules={[
-            {
-              required: true,
-              message: "Lütfen doğum yerinizi giriniz!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="dateOfIssue"
-          label={
-            <span>
-              Belge Veriliş Tarihi&nbsp;
-              <Tooltip title="Ehliyetinizin üzerindeki 4a numaralı alan. :)">
-                <QuestionCircleOutlined />
-              </Tooltip>
-            </span>
-          }
-          rules={[
-            {
-              required: true,
-              message: "Lütfen ehliyetinizin veriliş tarihini giriniz!",
-            },
-          ]}
-          hasFeedback
-        >
-          <DatePicker
-            placeholder="19.05.2020"
-            size="large"
-            format="DD.MM.YYYY"
-            disabledDate={disabledAfterMomentDate}
-            onChange={(date, dateString) =>
-              handleDatePickerDateChange("dateOfIssue", dateString)
-            }
-          />
-        </Form.Item>
-        <Form.Item
-          name="validTime"
-          label={
-            <span>
-              Belge Geçerlilik Tarihi&nbsp;
-              <Tooltip title="Ehliyetinizin üzerindeki 4b numaralı alan. :)">
-                <QuestionCircleOutlined />
-              </Tooltip>
-            </span>
-          }
-          rules={[
-            {
-              required: true,
-              message: "Lütfen ehliyetinizin geçerlilik tarihini giriniz!",
-            },
-          ]}
-          hasFeedback
-        >
-          <DatePicker
-            placeholder="19.05.2030"
-            size="large"
-            format="DD.MM.YYYY"
-            disabledDate={disabledBeforeMomentDate}
-            onChange={(date, dateString) =>
-              handleDatePickerDateChange("validTime", dateString)
-            }
-          />
-        </Form.Item>
-        <Form.Item
-          name="office"
-          label={
-            <span>
-              Verildiği Yer&nbsp;
-              <Tooltip title="Ehliyetinizin üzerindeki 4c numaralı alan. :)">
-                <QuestionCircleOutlined />
-              </Tooltip>
-            </span>
-          }
-          rules={[
-            {
-              required: true,
-              message:
-                "Lütfen ehliyetinizin verildiği yer bilgisini tam olarak giriniz!",
-              whitespace: true,
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="documentNo"
-          label={
-            <span>
-              Seri No&nbsp;
-              <Tooltip title="Ehliyetinizin üzerindeki 5 numaralı alan. :)">
-                <QuestionCircleOutlined />
-              </Tooltip>
-            </span>
-          }
-          rules={[
-            {
-              required: true,
-              message: "Lütfen ehliyetinizin seri numarasını giriniz!",
-              whitespace: true,
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="tcno"
-          label="Kimlik No"
-          rules={[
-            {
-              required: true,
-              message: "Lütfen TC kimlik numaranızı giriniz!",
-            },
-          ]}
-          hasFeedback
-        >
-          <Input />
-        </Form.Item>
-        <Divider />
-        <p>
-          Zaten bir hesabınız var mı? <Button type="link">Giriş yapın!</Button>
-        </p>
-      </Form>
+      <DriverLicenceForm
+        userCredentials={props.userCredentials}
+        driverLicenceFormValues={driverLicenceFormValues}
+        setDriveLicenceFormValues={setDriveLicenceFormValues}
+      />
     );
+  };
+  const route = (path) => {
+    history.push(`${path}`);
+    window.location.reload();
   };
 
   const registerAllDone = () => {
@@ -427,29 +265,39 @@ export default function Register(props) {
         title="Artık aramızdasın!"
         subTitle={`Merhaba ${props.userCredentials["user_inf"].name}! Üyeliğini oluşturduk, artık kampanyalarımız ve size özel tekliflerimizden yararlanabileceksin. Tebrikler!"`}
         extra={[
-          <Link to="/">
-            <Button type="primary" key={uuid()}>
+          <>
+            <Button type="primary" onClick={() => route("/")}>
               Hemen Araç Kirala!
             </Button>
-          </Link>,
-          <Link to="/profile">
-            <Button>Hesabım</Button>
-          </Link>,
+            <Button onClick={() => route("/profile")}>Hesabım</Button>
+          </>,
         ]}
       />
     );
   };
   const userRegister = () => {
     const name = userFormValues.name.split(" ");
-    registerData = {
-      ...registerData,
-      email: userFormValues.email,
-      name: name[0],
-      password: userFormValues.password,
-      phoneNumber: userFormValues.phoneNumber,
-      surname: name[1],
-      username: userFormValues.username,
-    };
+    if (name.length === 3)
+      registerData = {
+        ...registerData,
+        email: userFormValues.email,
+        name: name[0] + " " + name[1],
+        password: userFormValues.password,
+        phoneNumber: userFormValues.phoneNumber,
+        surname: name[2],
+        username: userFormValues.username,
+      };
+    else
+      registerData = {
+        ...registerData,
+        email: userFormValues.email,
+        name: name[0],
+        password: userFormValues.password,
+        phoneNumber: userFormValues.phoneNumber,
+        surname: name[1],
+        username: userFormValues.username,
+      };
+
     if (
       registerData.email === "" ||
       registerData.name === "" ||
@@ -534,6 +382,7 @@ export default function Register(props) {
   const driverLicenceRegister = () => {
     const name = props.userCredentials["user_inf"].name;
     const surname = props.userCredentials["user_inf"].surname;
+    const birthYear = driverLicenceFormValues.birthDate.split(".");
     const driverLicenceData = {
       birthDate: driverLicenceFormValues.birthDate,
       birthLocation: driverLicenceFormValues.birthLocation,
@@ -546,26 +395,46 @@ export default function Register(props) {
       office: driverLicenceFormValues.office,
     };
     console.log(driverLicenceData);
-    registerDriverLicenceService(driverLicenceData).then((res) => {
-      console.log(res);
-      if (res["result"] === "OK") {
-        const loginData = {
-          username: userFormValues.username,
-          password: userFormValues.password,
-        };
-        signIn(loginData).then((res) => {
-          props.setLoginCredentials(res);
-          setcurrent(current + 1);
-        });
-        setTimeout(() => {
-          setLoading(false);
-        }, 2000);
+    const identityData = {
+      name: name.turkishToUpper(),
+      surname: surname.turkishToUpper(),
+      tcNo: driverLicenceFormValues.tcno,
+      year: birthYear[2],
+    };
+    console.log(identityData);
+    checkIdentity(identityData)
+      .then((res) => {
+        console.log(res);
+        if (res === true) {
+          registerDriverLicenceService(driverLicenceData).then((res) => {
+            console.log(res);
+            if (res) {
+              const loginData = {
+                username: userFormValues.username,
+                password: userFormValues.password,
+              };
+              signIn(loginData).then((res) => {
+                props.setLoginCredentials(res);
+                setcurrent(current + 1);
+              });
+              setTimeout(() => {
+                setLoading(false);
+              }, 2000);
 
-        setcurrent(current + 1);
-      } else {
-      }
-      setLoading(false);
-    });
+              setcurrent(current + 1);
+            } else {
+            }
+            setLoading(false);
+          });
+        } else if (res === false)
+          message.warning(
+            "Kimlik bilgileriniz doğrulanamadı, lütfen tekrar dener misiniz? :)"
+          );
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   const onUserFormValuesChange = (values) => {
     const userFormValue = {
@@ -574,16 +443,7 @@ export default function Register(props) {
     };
     setUserFormValues(userFormValue);
   };
-  const onDriverLicenceFormValuesChange = (values) => {
-    const driverLicenceFormValue = {
-      ...driverLicenceFormValues,
-      ...values,
-    };
-    setDriveLicenceFormValues(driverLicenceFormValue);
-    console.log(driverLicenceFormValues);
-    console.log(driverLicenceFormValue);
-    console.log(values);
-  };
+
   const next = (step) => {
     if (step === 1) {
       setLoading(true);
@@ -597,11 +457,7 @@ export default function Register(props) {
   const skip = () => {
     history.push("/");
   };
-  const handleDatePickerDateChange = (key, value) => {
-    console.log(value);
-    setDriveLicenceFormValues({ ...driverLicenceFormValues, [key]: value });
-    console.log(driverLicenceFormValues);
-  };
+
   return (
     <Layout userCredentials={props.userCredentials}>
       <Card

@@ -13,6 +13,7 @@ export default function Router() {
   const [localUserCredits, setLocalUserCredits] = useState(
     userCredentialsModel
   );
+
   async function checkTokenValidity() {
     if (localUserCredits && localUserCredits !== userCredentialsModel) {
       await getUser(localUserCredits["access_inf"]["access_token"])
@@ -24,6 +25,7 @@ export default function Router() {
           setUserCredentials(userCredentialsModel);
           console.log(localUserCredits);
           console.log(error.response);
+          localStorage.removeItem("userCredentials");
         });
     }
   }
@@ -83,10 +85,14 @@ export default function Router() {
           )}
         </Route>
         <Route path="/profile">
-          <Profile
-            userCredentials={userCredentials}
-            updateUserDetails={updateUserDetails}
-          />
+          {0 && userCredentials === userCredentialsModel ? (
+            <Redirect to="/" />
+          ) : (
+            <Profile
+              userCredentials={userCredentials}
+              updateUserDetails={updateUserDetails}
+            />
+          )}
         </Route>
       </Switch>
     </BrowserRouter>

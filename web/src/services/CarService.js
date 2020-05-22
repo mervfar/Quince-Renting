@@ -10,7 +10,8 @@ export async function getLocations(location) {
     .then((response) => response.data)
     .then((result) => {
       return result;
-    });
+    })
+    .catch((error) => console.log("error", error));
 }
 
 export async function getCars(carData) {
@@ -23,5 +24,6 @@ export async function getCars(carData) {
     .then((response) => response.data)
     .then((result) => {
       return result;
-    });
+    })
+    .catch((error) => console.log("error", error));
 }
