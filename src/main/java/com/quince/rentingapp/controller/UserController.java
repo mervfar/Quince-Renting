@@ -64,12 +64,15 @@ public class UserController {
         return userService.existsByEmail(email);
     }
     @PostMapping("/edit")
-    public Boolean updateProfilePicture(@RequestParam(value = "file") MultipartFile file) throws IOException {
+    public Map<String,String> updateProfilePicture(@RequestParam(value = "file") MultipartFile file) throws IOException {
+        HashMap<String,String> result =new HashMap<>();
         User user =userService.findById(currentUser.getCurrentUser().getId());
         String imageUrl=uploadService.uploadFile(file,user.getUsername());
         user.setImageUrl(imageUrl);
         userService.saveUser(user);
-        return true;
+        result.put("info","Uploaded!");
+        result.put("data",imageUrl);
+        return result;
     }
     private List<UserViewDTO> convertToViewDTO(List<User> userList){
         List<UserViewDTO> userViewDTOS=Lists.newArrayList();
