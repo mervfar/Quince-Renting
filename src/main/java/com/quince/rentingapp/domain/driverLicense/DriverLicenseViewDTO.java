@@ -19,5 +19,5 @@ public class DriverLicenseViewDTO {
     private long documentNo;
     private boolean intern;
     private boolean valid;
-    private Set<LicenseCategory> licenseCategory;
+    //private Set<LicenseCategory> licenseCategory;
 }

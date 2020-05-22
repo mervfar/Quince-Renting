@@ -49,12 +49,12 @@ public class DriverLicenseController {
         return new DriverLicenseAddDTO();
     }
     @PostMapping("/save")
-    public String saveLicense(@RequestBody DriverLicenseAddDTO newLicense){
+    public DriverLicenseViewDTO saveLicense(@RequestBody DriverLicenseAddDTO newLicense){
         DriverLicense license=Utils.mapper(newLicense,DriverLicense.class);
         User user=currentUser.getCurrentUser();
         user.setDriverLicense(license);
         userService.saveUser(user);
-        return  "{\"result\":\"OK\"}";
+        return  Utils.mapper(license,DriverLicenseViewDTO.class);
     }
     @GetMapping("/addCategory")
     public LicenseCategoryAddDTO categoryAddPrepare(){
