@@ -26,8 +26,8 @@ public class InvoiceService {
         Invoice newInvoice =Utils.mapper(invoiceAddDTO,Invoice.class);
         newInvoice.setUser(currentUser.getCurrentUser());
         newInvoice.setRentingTime(calculateDate(invoiceAddDTO.getRentingStart(),invoiceAddDTO.getRentingEnd()));
-        long totalFee= Long.parseLong(newInvoice.getRentingTime())*Long.parseLong(newInvoice.getCarFee());
-        newInvoice.setTotalFee(Long.toString(totalFee));
+        //long totalFee= Long.parseLong(newInvoice.getRentingTime())*Long.parseLong(newInvoice.getCarFee());
+        newInvoice.setTotalFee(newInvoice.getCarFee());
         invoiceRepository.save(newInvoice);
         result.put("info","Invoice has been created!");
         return result;

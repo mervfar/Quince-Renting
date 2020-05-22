@@ -91,8 +91,8 @@ public class AvisService {
             CarViewDTO tempCar=new CarViewDTO();
             tempCar.setCarBody(vehicles.getJSONObject(i).getJSONObject("capacity").getString("seats")+" Kişilik");
             tempCar.setName(vehicles.getJSONObject(i).getJSONObject("category").getString("name"));
-            tempCar.setBrand(vehicles.getJSONObject(i).getJSONObject("category").getString("make"));
-            tempCar.setSeries(vehicles.getJSONObject(i).getJSONObject("category").getString("model"));
+            //tempCar.setBrand(vehicles.getJSONObject(i).getJSONObject("category").getString("make"));
+            //tempCar.setSeries(vehicles.getJSONObject(i).getJSONObject("category").getString("model"));
             tempCar.setImageUrl(vehicles.getJSONObject(i).getJSONObject("category").getString("image_url"));
             tempCar.setGear(vehicles.getJSONObject(i).getJSONObject("category").getString("vehicle_transmission"));
             tempCar.setPrice(vehicles.getJSONObject(i).getJSONObject("rate_totals").getJSONObject("pay_later").getString("reservation_total")+" "+
