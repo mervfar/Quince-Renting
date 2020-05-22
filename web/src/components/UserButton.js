@@ -8,15 +8,30 @@ import {
 } from "@ant-design/icons";
 import styles from "./userbutton.module.scss";
 import { signOut } from "../services/AuthService";
+import { v4 as uuid } from "uuid";
 
 const ColorList = ["#f56a00", "#7265e6", "#ffbf00", "#00a2ae"];
 export default function UserButton(props) {
   const [color, setColor] = useState(ColorList[0]);
   const [menuFlag, setMenuFlag] = useState(false);
+  const [notifications, setNotifications] = useState([{}]);
+  const [count, setCount] = useState(0);
   let history = useHistory();
   useEffect(() => {
     setColor(ColorList[Math.floor(4 * Math.random())]);
+
+    if (!props.userInf["driverLicence"]) {
+      const notifications = [
+        {
+          text: "Ehliyet bilgileriniz eksik!",
+        },
+      ];
+      setNotifications(notifications);
+    }
   }, [props]);
+  useEffect(() => {
+    if (notifications[0].text) setCount(notifications.length);
+  }, [notifications]);
   const handleMenuClick = (e) => {
     if (e.key !== "1") {
       setMenuFlag(false);
@@ -25,17 +40,30 @@ export default function UserButton(props) {
       history.push("/profile");
     } else if (e.key === "3") {
       signOut();
+      history.push("/");
       window.location.reload();
     } else console.log(e.key);
   };
   const handleVisibleChange = (flag) => {
     setMenuFlag(flag);
   };
+  const getNotifications = () => {
+    if (notifications[0].text)
+      return notifications.map((n) => {
+        return (
+          <Menu.Item key={uuid()}>
+            <Badge status="warning" text={`${n.text}`} />
+          </Menu.Item>
+        );
+      });
+  };
   const menu = (
     <Menu onClick={handleMenuClick} className={styles.menu}>
       <Menu.Item key="1">
-        <Badge status="success" text={`Merhaba, ${props.name}`} />
+        <Badge status="success" text={`Merhaba, ${props.userInf["name"]}`} />
       </Menu.Item>
+      {getNotifications()}
+
       <Menu.Divider />
       <Menu.Item key="2">
         <SolutionOutlined /> Profil
@@ -53,7 +81,7 @@ export default function UserButton(props) {
         visible={menuFlag}
         onVisibleChange={handleVisibleChange}
       >
-        <Badge count={1} onClick={(e) => e.preventDefault()}>
+        <Badge count={count} onClick={(e) => e.preventDefault()}>
           <Avatar
             shape="square"
             size="large"
@@ -62,7 +90,7 @@ export default function UserButton(props) {
               backgroundColor: color,
             }}
           >
-            <UserOutlined /> {props.name}
+            <UserOutlined /> {props.userInf["name"]}
           </Avatar>
         </Badge>
       </Dropdown>

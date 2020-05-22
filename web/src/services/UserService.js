@@ -32,3 +32,19 @@ export async function registerDriverLicenceService(driverLicenceData) {
       return result;
     });
 }
+
+export async function setUserPhoto(formData) {
+  let requestOptions = {
+    method: "POST",
+    url: `${BASE_URL}/api/user/edit`,
+    headers: {
+      Authorization: `Bearer ${gtoken}`,
+    },
+    data: formData,
+  };
+  return await axios(requestOptions)
+    .then((response) => response.data)
+    .then((result) => {
+      return result;
+    });
+}

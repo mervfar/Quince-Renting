@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout";
-import { Form, Input, Button, Checkbox, Divider, Card, Spin } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  Checkbox,
+  Divider,
+  Card,
+  Spin,
+  message,
+} from "antd";
 import { Link, useHistory } from "react-router-dom";
 import { signIn } from "../../services/AuthService";
 
@@ -34,7 +43,9 @@ export default function Login(props) {
         }, 1500);
       })
       .catch((res) => {
-        history.push("/profile");
+        message.warning(
+          "Bilgilerinizi doğrulayamadık. Tekrar deneyebilir misiniz?"
+        );
       });
   };
 

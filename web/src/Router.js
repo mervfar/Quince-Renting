@@ -27,20 +27,24 @@ export default function Router() {
         });
     }
   }
-  function prepareUserDetails() {
+  async function prepareUserDetails() {
     setLocalUserCredits(JSON.parse(localStorage.getItem("userCredentials")));
     if (loginCredentials["access_token"]) {
-      getUser(loginCredentials["access_token"]).then((res) => {
-        console.log(res);
+      await getUser(loginCredentials["access_token"]).then((res) => {
         let userCredits = {
           access_inf: loginCredentials,
-          user_inf: res,
+          user_inf: { ...res["user"], driverLicence: res["driverLicense"] },
         };
+        console.log(userCredits);
         setUserCredentials(userCredits);
         localStorage.setItem("userCredentials", JSON.stringify(userCredits));
       });
     }
   } // Configuring User Information
+  function updateUserDetails(userCredentials) {
+    setUserCredentials(userCredentials);
+    localStorage.setItem("userCredentials", JSON.stringify(userCredentials));
+  }
   useEffect(() => {
     prepareUserDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -68,7 +72,8 @@ export default function Router() {
           )}
         </Route>
         <Route path="/auth/register">
-          {userCredentials !== userCredentialsModel ? (
+          {/* {userCredentials !== userCredentialsModel ? ( */}
+          {0 ? (
             <Redirect to="/" />
           ) : (
             <Register
@@ -78,7 +83,10 @@ export default function Router() {
           )}
         </Route>
         <Route path="/profile">
-          <Profile userCredentials={userCredentials} />
+          <Profile
+            userCredentials={userCredentials}
+            updateUserDetails={updateUserDetails}
+          />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -428,7 +428,9 @@ export default function Register(props) {
         subTitle={`Merhaba ${props.userCredentials["user_inf"].name}! Üyeliğini oluşturduk, artık kampanyalarımız ve size özel tekliflerimizden yararlanabileceksin. Tebrikler!"`}
         extra={[
           <Link to="/">
-            <Button type="primary">Hemen Araç Kirala!</Button>
+            <Button type="primary" key={uuid()}>
+              Hemen Araç Kirala!
+            </Button>
           </Link>,
           <Link to="/profile">
             <Button>Hesabım</Button>
@@ -547,9 +549,19 @@ export default function Register(props) {
     registerDriverLicenceService(driverLicenceData).then((res) => {
       console.log(res);
       if (res["result"] === "OK") {
-        setTimeout(() => {}, 2000);
+        const loginData = {
+          username: userFormValues.username,
+          password: userFormValues.password,
+        };
+        signIn(loginData).then((res) => {
+          props.setLoginCredentials(res);
+          setcurrent(current + 1);
+        });
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
+
         setcurrent(current + 1);
-        setLoading(false);
       } else {
       }
       setLoading(false);
