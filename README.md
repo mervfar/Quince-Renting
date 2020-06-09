@@ -1,9 +1,16 @@
 # Quince Renting
 
-Welcome to our project repository for IZU Graduation Project.
+Welcome to our project repository for Istanbul Sabahattin Zaim University Graduation Project.
 
-You can find our project here!...
+Main structure of this project is Backend,Frontend and Mobile Application
+
+You can find out the spcecific branches for each software part.
+
 
 ## Project Description
 
-There will be edited.
+This project is based on car reting system with Avis-Budget RestAPI
+
+Backend - Ömer Faruk YILDIRIM
+Frontend - Anıl ÖZTÜRK
+
